@@ -5,9 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
      * Highlights the active navigation item based on the current URL path.
      * This function is executed once the DOM is fully loaded.
      */
-    const currentPath = window.location.pathname.split('/').pop();
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
     const pathMap = {
-        '': 'nav-home',
         'index.html': 'nav-home',
         'about.html': 'nav-about',
         'portfolio.html': 'nav-portfolio',
@@ -59,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const aboutPic = document.querySelector('.about-pic');
     if (aboutPic) {
         const originalPicSrc = 'images/about-pic.png'; // Path to the original image
-        const mobilePicSrc = 'images/mobile-about-pic.png'; // Path to the mobile image
+        const mobilePicSrc = 'images/about-pic-mobile.png'; // Path to the mobile image
 
         function updateAboutPic() {
             if (window.innerWidth <= 750) {
