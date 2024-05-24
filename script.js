@@ -6,13 +6,20 @@ document.addEventListener('DOMContentLoaded', () => {
      * This function is executed once the DOM is fully loaded.
      */
     const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    console.log("Current path:", currentPath);
+
     const pathMap = {
         'index.html': 'nav-home',
         'about.html': 'nav-about',
         'portfolio.html': 'nav-portfolio',
         'contact.html': 'nav-contact'
     };
+
+    console.log("Path map:", pathMap);
+
     const currentNavItemId = pathMap[currentPath];
+    console.log("Current nav item ID:", currentNavItemId);
+
     if (currentNavItemId) {
         document.querySelectorAll('.nav-elements a').forEach(item => {
             item.classList.remove('active');
@@ -20,7 +27,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentNavItem = document.getElementById(currentNavItemId);
         if (currentNavItem) {
             currentNavItem.classList.add('active');
+            console.log("Added active class to:", currentNavItem);
+        } else {
+            console.log("Current nav item not found");
         }
+    } else {
+        console.log("Current path not in path map");
     }
 
     /**
