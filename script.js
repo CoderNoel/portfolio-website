@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const aboutPic = document.querySelector('.about-pic');
     if (aboutPic) {
         const originalPicSrc = 'images/about-pic.png'; // Path to the original image
-        const mobilePicSrc = 'images/about-pic-mobile.png'; // Path to the mobile image
+        const mobilePicSrc = 'images/mobile-about-pic.png'; // Path to the mobile image
 
         function updateAboutPic() {
             if (window.innerWidth <= 750) {
