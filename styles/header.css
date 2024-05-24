@@ -1,0 +1,143 @@
+/* Header styles */
+.header {
+    background-color: white;
+    height: 80px;  
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 55px 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    height: 80px;
+}
+
+.logo {
+    height: 70px;
+    width: auto;
+}
+
+.nav-window {
+    display: flex;
+    align-items: center;
+    margin-right: 40px;
+}
+
+.nav-elements {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-elements a {
+    font-family: Poppins, Arial;
+    font-weight: 400;
+    font-size: 18px;
+    color: #001d4a;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.nav-elements a:hover {
+    background-color: #E2F1FF;
+    color: #001d4a;
+    padding: 4px 10px;
+    border-radius: 8px;
+}
+
+.nav-elements a.active {
+    background-color: rgb(33, 126, 255);
+    color: white;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 8px;
+}
+
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.hamburger-menu span {
+    height: 3px;
+    background-color: #001d4a;
+    margin: 5px 0;
+    width: 25px;
+    transition: 0.4s;
+}
+
+.mobile-nav {
+    display: none;
+    position: fixed; 
+    top: 80px; 
+    right: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 1000;
+    overflow-y: auto; 
+    max-height: 70vh; 
+}
+
+.mobile-nav-elements {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center; 
+}
+
+.mobile-nav-elements li {
+    border-bottom: 1px solid #ddd;
+}
+
+.mobile-nav-elements li a {
+    display: block;
+    padding: 10px;
+    color: #001d4a;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 750px) {
+    .nav-window {
+        display: none;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .mobile-nav {
+        display: none; 
+    }
+
+    .mobile-nav.active {
+        display: block;
+    }
+
+    .logo {
+        height: 60px; 
+    }
+
+    .header {
+        height: 60px; 
+        padding: 50px 30px;
+    }
+
+    .hamburger-menu {
+        padding: 5px;
+    }
+
+    .hamburger-menu span {
+        width: 20px; 
+        height: 2px;
+    }
+}
