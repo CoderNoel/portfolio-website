@@ -1,6 +1,7 @@
 /* Header styles */
 .header {
-    background-color: white;
+    backdrop-filter: saturate(1.8) blur(10px);
+    background-color: rgba(255, 255, 255, 0.8);
     height: 80px;  
     display: flex;
     justify-content: space-between;
@@ -43,14 +44,11 @@
     font-size: 18px;
     color: #001d4a;
     text-decoration: none;
-    transition: 0.5s;
+    transition: font-weight 0.08s;
 }
 
 .nav-elements a:hover {
-    background-color: #E2F1FF;
-    color: #001d4a;
-    padding: 4px 10px;
-    border-radius: 8px;
+    font-weight: 600;
 }
 
 .nav-elements a.active {
