@@ -28,5 +28,5 @@ This is a portfolio website designed to showcase my skills, projects, and experi
 
 ## Acknowledgments
 
-Special thanks to my course instructors of DECO1100 and peers for their valuable feedback and support throughout the development of this project.
+Special thanks to my course instructors of DECO1400 and peers for their valuable feedback and support throughout the development of this project.
 
