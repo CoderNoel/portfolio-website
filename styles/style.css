@@ -12,6 +12,7 @@ h1 {
     font-weight: 600;
     margin-bottom: 0;
     color: #217eff;
+    text-shadow: rgba(33, 126, 255, 0.3) 5px 5px 10px;
 }
 
 h2 {
@@ -133,6 +134,8 @@ main {
     }
     .hero-text {
         margin-top: 20px;
+        margin-left: 0;
+        margin-right: 0;
         text-align: center;
         display: flex;
         flex-direction: column;
@@ -142,7 +145,7 @@ main {
         font-size: 30px;
     }
     .hero-text h3 {
-        font-size: 20px;
+        font-size: 18px;
         margin-bottom: 10px;
     }
     .portfolio-button {
@@ -446,9 +449,8 @@ button:active {
         max-width: 400px;
         padding: 20px;
     }
-    .direct-links {
-        width: 100%;
-        max-width: 300px;
+    .direct-links a {
+        width: 300px;
         justify-content: flex-start;
     }
 }

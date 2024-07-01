@@ -1,4 +1,8 @@
 /* Header styles */
+html {
+    scroll-behavior: smooth;
+}
+
 .header {
     backdrop-filter: saturate(1.8) blur(10px);
     -webkit-backdrop-filter: saturate(1.8) blur(10px); /* Safari support */
@@ -45,19 +49,21 @@
     font-size: 18px;
     color: #001d4a;
     text-decoration: none;
-    transition: font-weight 0.08s;
+    transition: 0.5s;
 }
 
 .nav-elements a:hover {
-    font-weight: 600;
+    background-color: rgb(226, 241, 255);
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-weight: 500;
 }
 
 .nav-elements a.active {
-    background-color: rgb(33, 126, 255);
-    color: white;
-    font-weight: 500;
-    padding: 4px 10px;
-    border-radius: 8px;
+    color: #217eff;
+    font-weight: 600;
+    padding-bottom: 8px;
+    border-bottom: #217eff 3px solid;
 }
 
 .hamburger-menu {
@@ -78,7 +84,7 @@
 .mobile-nav {
     display: none;
     position: fixed; 
-    top: 80px; 
+    top: 100px; 
     right: 0;
     width: 100%;
     backdrop-filter: saturate(1.8) blur(10px);
