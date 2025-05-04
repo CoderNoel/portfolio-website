@@ -48,6 +48,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (aboutPic) {
         const originalPicSrc = 'images/about-pic.png';
         const mobilePicSrc = 'images/mobile-about-pic.png';
+        /**  
+         * Updates the About section image based on viewport width  
+         * Desktop: Uses the standard landscape image  
+         * Mobile: Uses a specially cropped portrait image for better mobile display  
+         */ 
         function updateAboutPic() {
             if (window.innerWidth <= 750) {
                 aboutPic.src = mobilePicSrc;

@@ -69,6 +69,11 @@ main {
     margin-left: 50px;
 }
 
+/*   
+ * Hero Section Styles  
+ * Desktop: Horizontal layout with image on right  
+ * Mobile: Vertical layout with centered content  
+ */ 
 .hero {
     display: flex;
     align-items: center;
@@ -298,6 +303,7 @@ main {
     color: white;
 }
 
+/* Media query for mobile devices */ 
 @media screen and (max-width: 750px) {
     .portfolio {
         margin-left: 30px;
