@@ -30,10 +30,15 @@ html {
     width: auto;
 }
 
+.header-controls-right {
+    display: flex;
+    align-items: center;
+}
+
 .nav-window {
     display: flex;
     align-items: center;
-    margin-right: 40px;
+    /* margin-right: 40px; */ /* Removed, spacing handled by button or within nav-elements */
 }
 
 .nav-elements {
@@ -118,6 +123,10 @@ html {
         display: none;
     }
 
+    .header-controls-right { /* Ensure this group is hidden on mobile if nav-window is */
+        display: none;
+    }
+
     .hamburger-menu {
         display: flex;
     }
@@ -150,18 +159,51 @@ html {
 }
 
 .theme-toggle-button {
-    padding: 5px 10px;
-    margin-left: 15px; /* Adjust spacing as needed */
+    background: none;
+    border: none;
+    padding: 6px; 
     cursor: pointer;
-    border-radius: 5px;
-    border: 1px solid var(--nav-link-text-color); /* Use a variable for border */
-    background-color: transparent; /* Or a subtle background */
-    color: var(--nav-link-text-color); /* Use a variable for text */
-    font-family: Poppins, Arial;
-    font-size: 14px; /* Adjust as needed */
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%; 
+    margin-right: 15px; /* Changed from margin-left to space it from nav items */
+    color: var(--nav-link-text-color); 
+    transition: background-color 0.3s ease;
 }
 
-body.dark-theme .theme-toggle-button {
-    border: 1px solid var(--nav-link-text-color); /* Ensure this uses the dark theme's nav link text color */
-    color: var(--nav-link-text-color);
+.theme-toggle-button:hover {
+    background-color: var(--nav-link-hover-background-color);
 }
+
+.theme-icon {
+    width: 22px; 
+    height: 22px;
+}
+
+.theme-icon-dark { /* Moon icon (darkmode.svg) */
+    /* Attempt to color via CSS if SVG permits */
+    /* fill: var(--nav-link-text-color); */ /* This line is commented out for now */
+    /* If your darkmode.svg is white, you MUST edit the SVG file itself to change its path fill colors to a dark color */
+}
+
+/* Light theme (default): show moon (darkmode.svg), hide sun (lightmode.svg) */
+.theme-toggle-button .theme-icon-light { /* Sun icon */
+    display: none; 
+}
+.theme-toggle-button .theme-icon-dark { /* Moon icon */
+    display: block; /* Or inline, depending on exact styling needs */
+}
+
+/* Dark theme: show sun (lightmode.svg), hide moon (darkmode.svg) */
+body.dark-theme .theme-toggle-button .theme-icon-dark {
+    display: none;
+}
+body.dark-theme .theme-toggle-button .theme-icon-light {
+    display: block; 
+    /* The sun icon (lightmode.svg) is white, so it should be visible in dark mode */
+}
+
+/* Removed old .theme-icon-moon, body.dark-theme .theme-icon-sun, body.dark-theme .theme-icon-moon rules as they targeted embedded SVGs */

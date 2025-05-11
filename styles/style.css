@@ -571,3 +571,20 @@ button:active {
     vertical-align: middle; /* Adjust as needed to align with text */
     margin-right: 5px; /* Space between icon and "Github Link" text */
 }
+
+/* GitHub icon display corrections for dark theme */
+body.dark-theme .project .project-link .link-button a.github-link .github-logo-default { /* Default black icon */
+    display: none; /* Hide black icon by default in dark mode */
+}
+
+body.dark-theme .project .project-link .link-button a.github-link .github-logo-hover { /* Default white icon */
+    display: inline; /* Show white icon by default in dark mode */
+}
+
+body.dark-theme .project .project-link .link-button a.github-link:hover .github-logo-default { /* Hover black icon */
+    display: inline; /* Show black icon on hover in dark mode */
+}
+
+body.dark-theme .project .project-link .link-button a.github-link:hover .github-logo-hover { /* Hover white icon */
+    display: none; /* Hide white icon on hover in dark mode */
+}

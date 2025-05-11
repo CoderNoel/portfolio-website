@@ -99,10 +99,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function applyTheme(theme) {
         if (theme === 'dark') {
             document.body.classList.add('dark-theme');
-            if (themeToggleBtn) themeToggleBtn.textContent = 'Light Mode'; // Or an icon
         } else {
             document.body.classList.remove('dark-theme');
-            if (themeToggleBtn) themeToggleBtn.textContent = 'Dark Mode'; // Or an icon
         }
     }
 
