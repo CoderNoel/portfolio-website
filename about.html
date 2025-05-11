@@ -18,15 +18,17 @@
     </head>
 
     <body class="about-body">
+        <div class="page-transition"></div>
         <header class="header">
             <div class="logo-container">
                 <img class="logo" src="images/logo.png" alt="Logo">
             </div>
+            <!-- Standalone toggle button visible on all devices -->
+            <button id="themeToggleBtn" class="theme-toggle-button" aria-label="Toggle theme" title="Toggle theme">
+                <img src="images/Themes/darkmode.svg" alt="Switch to Dark Mode" class="theme-icon theme-icon-dark">
+                <img src="images/Themes/lightmode.svg" alt="Switch to Light Mode" class="theme-icon theme-icon-light">
+            </button>
             <div class="header-controls-right">
-                <button id="themeToggleBtn" class="theme-toggle-button" aria-label="Toggle theme" title="Toggle theme">
-                    <img src="images/Themes/darkmode.svg" alt="Switch to Dark Mode" class="theme-icon theme-icon-dark">
-                    <img src="images/Themes/lightmode.svg" alt="Switch to Light Mode" class="theme-icon theme-icon-light">
-                </button>
                 <nav class="nav-window">
                     <ul class="nav-elements">
                         <li><a href="index.html" id="nav-home">Home</a></li>
@@ -66,7 +68,40 @@
                     </p>
                 </div>
                 <div class="about-image">
-                    <img src="images/about-pic.png" alt="Noel's Picture" class="about-pic">
+                    <img src="images/about-pic.png" alt="Noel's Picture" class="about-pic" loading="lazy">
+                </div>
+            </section>
+
+            <section class="skills-section">
+                <h2>Skills & Expertise</h2>
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h3>Frontend Development</h3>
+                        <ul class="skill-list">
+                            <li class="skill-item"><span>HTML5 & CSS3</span></li>
+                            <li class="skill-item"><span>JavaScript</span></li>
+                            <li class="skill-item"><span>Responsive Design</span></li>
+                            <li class="skill-item"><span>Bootstrap</span></li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Programming Languages</h3>
+                        <ul class="skill-list">
+                            <li class="skill-item"><span>Python</span></li>
+                            <li class="skill-item"><span>JavaScript</span></li>
+                            <li class="skill-item"><span>Java</span></li>
+                            <li class="skill-item"><span>SQL</span></li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Tools & Technologies</h3>
+                        <ul class="skill-list">
+                            <li class="skill-item"><span>Git & GitHub</span></li>
+                            <li class="skill-item"><span>VS Code</span></li>
+                            <li class="skill-item"><span>Adobe Creative Suite</span></li>
+                            <li class="skill-item"><span>Command Line</span></li>
+                        </ul>
+                    </div>
                 </div>
             </section>
         </main>
@@ -76,13 +111,13 @@
                 <h3>Connect</h3>
                 <div class="social-links">
                     <a href="https://github.com/codernoel" target="_blank" rel="noopener">
-                        <img src="images/footer/github.svg" alt="Github Link">
+                        <img src="images/footer/github.svg" alt="Github Link" loading="lazy">
                     </a>
                     <a href="https://linkedin.com/in/codernoel" target="_blank" rel="noopener">
-                        <img src="images/footer/linkedin.png" alt="LinkedIn Link">
+                        <img src="images/footer/linkedin.png" alt="LinkedIn Link" loading="lazy">
                     </a>
                     <a href="https://instagram.com/codernoel" target="_blank" rel="noopener">
-                        <img src="images/footer/instagram.svg" alt="Instagram Link">
+                        <img src="images/footer/instagram.svg" alt="Instagram Link" loading="lazy">
                     </a>
                 </div>
             </div>
@@ -91,6 +126,11 @@
                 <p>© 2025 Codernoel. All rights reserved.</p>
             </div>
         </footer>
+        <button id="scrollTopBtn" class="scroll-top-button" aria-label="Scroll to top">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 4l-8 8h5v8h6v-8h5z"></path>
+            </svg>
+        </button>
         <script src="script.js"></script>
     </body>
 </html>

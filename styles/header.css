@@ -30,6 +30,48 @@ html {
     width: auto;
 }
 
+/* Theme toggle button - always visible */
+.theme-toggle-button {
+    background: none;
+    border: none;
+    padding: 6px; 
+    cursor: pointer;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%; 
+    margin: 0 15px; /* Space on both sides */
+    color: var(--nav-link-text-color); 
+    transition: background-color 0.3s ease;
+}
+
+.theme-toggle-button:hover {
+    background-color: var(--nav-link-hover-background-color);
+}
+
+.theme-icon {
+    width: 22px; 
+    height: 22px;
+}
+
+/* Light theme (default): show moon icon, hide sun icon */
+.theme-toggle-button .theme-icon-light { 
+    display: none; 
+}
+.theme-toggle-button .theme-icon-dark { 
+    display: block;
+}
+
+/* Dark theme: show sun icon, hide moon icon */
+body.dark-theme .theme-toggle-button .theme-icon-dark {
+    display: none;
+}
+body.dark-theme .theme-toggle-button .theme-icon-light {
+    display: block; 
+}
+
 .header-controls-right {
     display: flex;
     align-items: center;
@@ -122,21 +164,8 @@ html {
     .nav-window {
         display: none;
     }
-
-    .header-controls-right { /* Ensure this group is hidden on mobile if nav-window is */
-        display: none;
-    }
-
-    .hamburger-menu {
-        display: flex;
-    }
-
-    .mobile-nav {
-        display: none; 
-    }
-
-    .mobile-nav.active {
-        display: block;
+    .header-controls-right { 
+        display: none; /* Hide only the navigation */
     }
 
     .logo {
@@ -145,7 +174,13 @@ html {
 
     .header {
         height: 60px; 
-        padding: 50px 30px;
+        padding: 10px 30px; /* Keep the reduced padding to ensure visibility */
+    }
+
+    /* No special handling needed for theme-toggle-button in mobile view now */
+
+    .hamburger-menu {
+        display: flex;
     }
 
     .hamburger-menu {
@@ -156,54 +191,16 @@ html {
         width: 20px; 
         height: 2px;
     }
+
+    .theme-toggle-button.theme-toggle-mobile {
+        display: flex; /* Show mobile toggle button */
+        align-items: center; /* Ensure alignment if not inherited */
+        justify-content: center; /* Ensure alignment if not inherited */
+        margin-left: auto; /* Push it to the right of the logo */
+        margin-right: 10px; /* Space before hamburger menu */
+    }
 }
 
-.theme-toggle-button {
-    background: none;
-    border: none;
-    padding: 6px; 
-    cursor: pointer;
-    display: flex; 
-    align-items: center;
-    justify-content: center;
-    width: 40px; 
-    height: 40px;
-    border-radius: 50%; 
-    margin-right: 15px; /* Changed from margin-left to space it from nav items */
-    color: var(--nav-link-text-color); 
-    transition: background-color 0.3s ease;
+.theme-toggle-button.theme-toggle-mobile {
+    display: none; /* Hidden by default (on desktop) */
 }
-
-.theme-toggle-button:hover {
-    background-color: var(--nav-link-hover-background-color);
-}
-
-.theme-icon {
-    width: 22px; 
-    height: 22px;
-}
-
-.theme-icon-dark { /* Moon icon (darkmode.svg) */
-    /* Attempt to color via CSS if SVG permits */
-    /* fill: var(--nav-link-text-color); */ /* This line is commented out for now */
-    /* If your darkmode.svg is white, you MUST edit the SVG file itself to change its path fill colors to a dark color */
-}
-
-/* Light theme (default): show moon (darkmode.svg), hide sun (lightmode.svg) */
-.theme-toggle-button .theme-icon-light { /* Sun icon */
-    display: none; 
-}
-.theme-toggle-button .theme-icon-dark { /* Moon icon */
-    display: block; /* Or inline, depending on exact styling needs */
-}
-
-/* Dark theme: show sun (lightmode.svg), hide moon (darkmode.svg) */
-body.dark-theme .theme-toggle-button .theme-icon-dark {
-    display: none;
-}
-body.dark-theme .theme-toggle-button .theme-icon-light {
-    display: block; 
-    /* The sun icon (lightmode.svg) is white, so it should be visible in dark mode */
-}
-
-/* Removed old .theme-icon-moon, body.dark-theme .theme-icon-sun, body.dark-theme .theme-icon-moon rules as they targeted embedded SVGs */

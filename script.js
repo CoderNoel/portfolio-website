@@ -1,6 +1,61 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log("Script loaded");
 
+    // Page transition effect
+    const pageTransition = document.querySelector('.page-transition');
+    
+    // On page load, fade out the transition layer
+    if (pageTransition) {
+        setTimeout(() => {
+            pageTransition.classList.add('fade-out');
+        }, 100);
+    }
+
+    // Add transition on navigation
+    document.addEventListener('click', (e) => {
+        const target = e.target;
+        
+        // If clicked element is a link to another page in our site
+        if (target.tagName === 'A' && 
+            target.href.includes(window.location.hostname) && 
+            !target.href.includes('#') && 
+            !target.getAttribute('target')) {
+            
+            e.preventDefault();
+            const targetHref = target.href;
+            
+            // Activate transition
+            pageTransition.classList.add('active');
+            
+            // Navigate after transition completes
+            setTimeout(() => {
+                window.location.href = targetHref;
+            }, 400);
+        }
+    });
+
+    // Scroll to top button
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    
+    if (scrollTopBtn) {
+        // Show button when page is scrolled down
+        window.addEventListener('scroll', () => {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+        
+        // Scroll to top when button is clicked
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
     // Highlight the active navigation item
     const currentPath = window.location.pathname.split('/').pop() || 'index.html';
     const pathMap = {
