@@ -6,7 +6,7 @@ html {
 .header {
     backdrop-filter: saturate(1.8) blur(10px);
     -webkit-backdrop-filter: saturate(1.8) blur(10px); /* Safari support */
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: var(--header-background-color);
     height: 80px;  
     display: flex;
     justify-content: space-between;
@@ -47,23 +47,23 @@ html {
     font-family: Poppins, Arial;
     font-weight: 400;
     font-size: 18px;
-    color: #001d4a;
+    color: var(--nav-link-text-color);
     text-decoration: none;
     transition: 0.5s;
 }
 
 .nav-elements a:hover {
-    background-color: rgb(226, 241, 255);
+    background-color: var(--nav-link-hover-background-color);
     border-radius: 5px;
     padding: 5px 10px;
     font-weight: 500;
 }
 
 .nav-elements a.active {
-    color: #217eff;
+    color: var(--nav-link-active-color);
     font-weight: 600;
     padding-bottom: 8px;
-    border-bottom: #217eff 3px solid;
+    border-bottom: var(--nav-link-active-border-color) 3px solid;
 }
 
 .hamburger-menu {
@@ -75,7 +75,7 @@ html {
 
 .hamburger-menu span {
     height: 3px;
-    background-color: #001d4a;
+    background-color: var(--hamburger-icon-color);
     margin: 5px 0;
     width: 25px;
     transition: 0.4s;
@@ -89,7 +89,7 @@ html {
     width: 100%;
     backdrop-filter: saturate(1.8) blur(10px);
     -webkit-backdrop-filter: saturate(1.8) blur(10px); /* Safari support */
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: var(--header-background-color); /* Reusing header bg for mobile nav */
     z-index: 1000;
     overflow-y: auto; 
     max-height: 70vh; 
@@ -103,13 +103,13 @@ html {
 }
 
 .mobile-nav-elements li {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--mobile-nav-border-color);
 }
 
 .mobile-nav-elements li a {
     display: block;
     padding: 10px;
-    color: #001d4a;
+    color: var(--nav-link-text-color); /* Assuming same as desktop nav links */
     text-decoration: none;
 }
 
@@ -147,4 +147,21 @@ html {
         width: 20px; 
         height: 2px;
     }
+}
+
+.theme-toggle-button {
+    padding: 5px 10px;
+    margin-left: 15px; /* Adjust spacing as needed */
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid var(--nav-link-text-color); /* Use a variable for border */
+    background-color: transparent; /* Or a subtle background */
+    color: var(--nav-link-text-color); /* Use a variable for text */
+    font-family: Poppins, Arial;
+    font-size: 14px; /* Adjust as needed */
+}
+
+body.dark-theme .theme-toggle-button {
+    border: 1px solid var(--nav-link-text-color); /* Ensure this uses the dark theme's nav link text color */
+    color: var(--nav-link-text-color);
 }

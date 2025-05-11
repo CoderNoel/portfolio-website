@@ -91,4 +91,37 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileNav.classList.toggle('active');
         });
     }
+
+    // Theme Switcher
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const currentTheme = localStorage.getItem('theme');
+
+    function applyTheme(theme) {
+        if (theme === 'dark') {
+            document.body.classList.add('dark-theme');
+            if (themeToggleBtn) themeToggleBtn.textContent = 'Light Mode'; // Or an icon
+        } else {
+            document.body.classList.remove('dark-theme');
+            if (themeToggleBtn) themeToggleBtn.textContent = 'Dark Mode'; // Or an icon
+        }
+    }
+
+    if (currentTheme) {
+        applyTheme(currentTheme);
+    } else { // Default to light theme if no preference saved
+        applyTheme('light');
+        // Optionally, you could also set the localStorage item here for the default
+        // localStorage.setItem('theme', 'light'); 
+    }
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            let theme = 'light';
+            if (!document.body.classList.contains('dark-theme')) {
+                theme = 'dark';
+            }
+            localStorage.setItem('theme', theme);
+            applyTheme(theme);
+        });
+    }
 });

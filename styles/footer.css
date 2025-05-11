@@ -5,8 +5,8 @@ html, body {
 
 
 footer {
-    background-color: #121E2F;
-    color: white;
+    background-color: var(--footer-background-color);
+    color: var(--footer-text-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -15,12 +15,12 @@ footer {
 }
 
 .footer-left {
-    color: white;
+    color: var(--footer-text-color);
     flex: 1;
 }
 
 .footer-left h3 {
-    color: white;
+    color: var(--footer-text-color);
     font-weight: 500;
     font-size: 26px;
     margin-bottom: 10px;
@@ -36,14 +36,14 @@ footer {
     text-align: right;
 }
 .footer-right p {
-    color: #CACACA;
+    color: var(--footer-secondary-text-color);
     font-weight: 300;
     font-size: 12px;
     text-align: right;
 }
 
 .developed {
-    color: #9ECBFF;
+    color: var(--footer-accent-text-color);
     font-weight: 500;
     font-size: 14px;
     margin: 0;
