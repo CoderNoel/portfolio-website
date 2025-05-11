@@ -460,3 +460,27 @@ button:active {
         justify-content: flex-start;
     }
 }
+
+/* GitHub link icon hover effect in portfolio */
+.project .project-link .link-button a.github-link .github-logo-hover {
+    display: none;
+}
+
+.project .project-link .link-button a.github-link:hover .github-logo-default {
+    display: none;
+}
+
+.project .project-link .link-button a.github-link:hover .github-logo-hover {
+    display: inline; /* Or block, depending on layout needs, but inline is typical for icons next to text */
+}
+
+/* Optional: Add a transition if desired, though swapping display won't transition smoothly.
+   For smoother transitions, opacity is better, but requires both images to be layered.
+   Let's stick to display for now for simplicity with the current HTML structure.
+   If you want a fade effect, we'd adjust the HTML and CSS slightly.
+*/
+.project .project-link .link-button a.github-link .github-logo {
+    /* transition: opacity 0.25s ease-in-out; */ /* This won't work with display changes but is here if we switch to opacity */
+    vertical-align: middle; /* Adjust as needed to align with text */
+    margin-right: 5px; /* Space between icon and "Github Link" text */
+}

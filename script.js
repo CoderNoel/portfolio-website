@@ -20,29 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Change icon on hover
-    const linkButtons = document.querySelectorAll('.link-button');
-    linkButtons.forEach(button => {
-        const link = button.querySelector('.github-link');
-        const img = link.querySelector('.github-logo');
-        const originalSrc = img.src;
-        const whiteSrc = 'images/github-mark/github-mark-white.png';
-        button.addEventListener('mouseover', () => {
-            img.style.opacity = 0;
-            setTimeout(() => {
-                img.src = whiteSrc;
-                img.style.opacity = 1;
-            }, 250);
-        });
-        button.addEventListener('mouseout', () => {
-            img.style.opacity = 0;
-            setTimeout(() => {
-                img.src = originalSrc;
-                img.style.opacity = 1;
-            }, 250);
-        });
-    });
-
     // Change about section image for mobile view
     const aboutPic = document.querySelector('.about-pic');
     if (aboutPic) {
