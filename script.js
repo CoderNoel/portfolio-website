@@ -73,6 +73,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentNavItem) {
             currentNavItem.classList.add('active');
         }
+
+        // Mobile navigation highlight
+        const mobileNavItemId = `${currentNavItemId}-mobile`;
+        document.querySelectorAll('.mobile-nav-elements a').forEach(item => {
+            item.classList.remove('active');
+        });
+        const currentMobileNavItem = document.getElementById(mobileNavItemId);
+        if (currentMobileNavItem) {
+            currentMobileNavItem.classList.add('active');
+        }
     }
 
     // Change about section image for mobile view
@@ -141,9 +151,29 @@ document.addEventListener('DOMContentLoaded', () => {
     // Toggle mobile navigation menu
     const hamburgerMenu = document.getElementById('hamburgerMenu');
     const mobileNav = document.getElementById('mobileNav');
+    const headerElement = document.querySelector('.header');
+
+    function updateHeaderBlur() {
+        if (!headerElement) return;
+        const atTop = window.scrollY === 0;
+        const menuOpen = mobileNav && mobileNav.classList.contains('active');
+        if (!atTop || menuOpen) {
+            headerElement.classList.add('blur');
+        } else {
+            headerElement.classList.remove('blur');
+        }
+    }
+
+    // Initial check after page loads
+    updateHeaderBlur();
+
+    // Update on scroll
+    window.addEventListener('scroll', updateHeaderBlur);
+
     if (hamburgerMenu && mobileNav) {
         hamburgerMenu.addEventListener('click', () => {
             mobileNav.classList.toggle('active');
+            updateHeaderBlur(); // Ensure header blur reflects menu state
         });
     }
 
@@ -157,14 +187,32 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             document.body.classList.remove('dark-theme');
         }
+        
+        // Update the logo image depending on theme
+        const logoLightSrc = 'images/logo.png';
+        const logoDarkSrc = 'images/darkLogo.png';
+        document.querySelectorAll('.logo').forEach(logoImg => {
+            logoImg.src = (theme === 'dark') ? logoDarkSrc : logoLightSrc;
+            console.log('Logo updated to', logoImg.src);
+        });
     }
 
     if (currentTheme) {
+        // Respect previously chosen theme
         applyTheme(currentTheme);
-    } else { // Default to light theme if no preference saved
-        applyTheme('light');
-        // Optionally, you could also set the localStorage item here for the default
-        // localStorage.setItem('theme', 'light'); 
+    } else {
+        // Detect system preference
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        applyTheme(prefersDark ? 'dark' : 'light');
+
+        // Listen for changes in system preference IF user has not manually chosen a theme yet
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            // Only react if user hasn't overridden theme manually
+            if (!localStorage.getItem('theme')) {
+                const newTheme = e.matches ? 'dark' : 'light';
+                applyTheme(newTheme);
+            }
+        });
     }
 
     if (themeToggleBtn) {

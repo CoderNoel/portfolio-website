@@ -4,19 +4,26 @@ html {
 }
 
 .header {
-    backdrop-filter: saturate(1.8) blur(10px);
-    -webkit-backdrop-filter: saturate(1.8) blur(10px); /* Safari support */
-    background-color: var(--header-background-color);
+    background-color: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none; /* Safari support */
     height: 80px;  
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 55px 30px;
+    padding: 55px 30px; /* Original desktop padding */
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 100;
+}
+
+/* Blur/background appears when scrolling or menu open */
+.header.blur {
+    backdrop-filter: saturate(1.8) blur(10px);
+    -webkit-backdrop-filter: saturate(1.8) blur(10px);
+    background-color: var(--header-background-color);
 }
 
 .logo-container {
@@ -131,15 +138,20 @@ body.dark-theme .theme-toggle-button .theme-icon-light {
 .mobile-nav {
     display: none;
     position: fixed; 
-    top: 100px; 
+    top: 80px; /* Start just below header */
     right: 0;
     width: 100%;
     backdrop-filter: saturate(1.8) blur(10px);
     -webkit-backdrop-filter: saturate(1.8) blur(10px); /* Safari support */
-    background-color: var(--header-background-color); /* Reusing header bg for mobile nav */
-    z-index: 1000;
+    background-color: var(--header-background-color);
+    z-index: 1000; /* Above header */
     overflow-y: auto; 
     max-height: 70vh; 
+}
+
+/* Remove top divider between header and first menu item */
+.mobile-nav-elements li:first-child {
+    border-top: none;
 }
 
 .mobile-nav-elements {
@@ -160,6 +172,21 @@ body.dark-theme .theme-toggle-button .theme-icon-light {
     text-decoration: none;
 }
 
+.mobile-nav-elements a.active {
+    position: relative;
+    font-weight: 600;
+    border-left: 4px solid var(--nav-link-active-color);
+    background-color: rgba(33, 126, 255, 0.12);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+body.dark-theme .mobile-nav-elements a.active {
+    background-color: rgba(33, 126, 255, 0.12);
+    backdrop-filter: brightness(1.3) blur(4px);
+    -webkit-backdrop-filter: brightness(1.3) blur(4px);
+}
+
 @media screen and (max-width: 750px) {
     .nav-window {
         display: none;
@@ -173,8 +200,8 @@ body.dark-theme .theme-toggle-button .theme-icon-light {
     }
 
     .header {
-        height: 60px; 
-        padding: 10px 30px; /* Keep the reduced padding to ensure visibility */
+        height: 80px; 
+        padding: 15px 30px; /* Slightly more padding for better touch target */
     }
 
     /* No special handling needed for theme-toggle-button in mobile view now */
@@ -199,8 +226,24 @@ body.dark-theme .theme-toggle-button .theme-icon-light {
         margin-left: auto; /* Push it to the right of the logo */
         margin-right: 10px; /* Space before hamburger menu */
     }
+
+    /* Show mobile navigation when active on small screens */
+    .mobile-nav.active {
+        display: block;
+    }
 }
 
 .theme-toggle-button.theme-toggle-mobile {
     display: none; /* Hidden by default (on desktop) */
+}
+
+@media screen and (min-width: 751px) {
+    /* Desktop layout tweaks: keep items left-aligned, push nav to far right */
+    .header {
+        justify-content: flex-start;
+    }
+
+    .header-controls-right {
+        margin-left: auto; /* Push nav section to extreme right */
+    }
 }

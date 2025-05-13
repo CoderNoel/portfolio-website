@@ -4,7 +4,7 @@
   --secondary-text-color: #001d4a; 
   --body-background-color: #FFFFFF;
   --body-text-color: #001d4a; /* General text color for body if not specified by h1, p etc. */
-  --header-background-color: rgba(255, 255, 255, 0.8);
+  --header-background-color: rgba(255, 255, 255, 0.85);
   --footer-background-color: #121E2F;
   --footer-text-color: #FFFFFF;
   --footer-secondary-text-color: #CACACA;
@@ -45,7 +45,7 @@ body.dark-theme {
   --body-background-color: #121212; /* Very dark grey, near black */
   --body-text-color: #e0e0e0; /* General text color for body */
 
-  --header-background-color: rgba(28, 28, 30, 0.8); /* Dark, slightly transparent */
+  --header-background-color: rgba(28, 28, 30, 0.85); /* Dark, slightly transparent */
   
   /* Footer is already dark, so colors might be similar or slightly adjusted */
   --footer-background-color: #0a121e; /* Even darker or same */
@@ -182,7 +182,7 @@ main {
 }
 
 .avatar {
-    max-width: 300px;
+    max-width: 350px;
     min-width: 100px;
 }
 
@@ -220,7 +220,7 @@ main {
     }
     .hero-image {
         margin-top: 20px;
-        max-width: 220px;
+        max-width: 300px;
     }
     .hero-text {
         margin-top: 20px;
