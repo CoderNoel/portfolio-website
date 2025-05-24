@@ -1,110 +1,541 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <title>Home - Codernoel</title>
-
-        <link rel="stylesheet" href="styles/style.css">
-        <link rel="stylesheet" href="styles/footer.css">
-        <link rel="stylesheet" href="styles/header.css">
-
-        <!-- Font: Poppins, Linked from Google Fonts-->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>codernoel - Noel Shaju | Creative Developer</title>
     
-        <!-- Favicon -->
-        <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-
-        <!-- Open Graph Meta Tags for Social Share Preview -->
-        <meta property="og:title" content="Codernoel - Portfolio" />
-        <meta property="og:description" content="Explore Codernoel's personal portfolio showcasing projects, skills, and more!" />
-        <meta property="og:image" content="https://codernoel.com/images/SocialPreview.png" />
-        <meta property="og:url" content="https://codernoel.com/" />
-        <meta property="og:type" content="website" />
+    <!-- Preload critical fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
-        <!-- Twitter Card Meta Tags (optional) -->
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Codernoel - Portfolio" />
-        <meta name="twitter:description" content="Explore Codernoel's personal portfolio showcasing projects, skills, and more!" />
-        <meta name="twitter:image" content="https://codernoel.com/images/SocialPreview.png" />
-    </head>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles/modern.css">
+    
+    <!-- Meta tags for SEO and social sharing -->
+    <meta name="description" content="Noel Shaju - Creative Developer specializing in modern web experiences and innovative digital solutions.">
+    <meta property="og:title" content="codernoel - Noel Shaju | Creative Developer">
+    <meta property="og:description" content="codernoel - Creative Developer specializing in modern web experiences and innovative digital solutions.">
+    <meta property="og:image" content="https://codernoel.com/images/social-preview.jpg">
+    <meta property="og:url" content="https://codernoel.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    
+    <!-- Theme color for mobile browsers -->
+    <meta name="theme-color" content="#000000">
+</head>
 
-    <body class="home-body">
-        <div class="page-transition"></div>
-        <header class="header">
-            <div class="logo-container">
-                <img class="logo" src="images/logo.png" alt="Logo">
-            </div>
-            <!-- Standalone toggle button visible on all devices -->
-            <button id="themeToggleBtn" class="theme-toggle-button" aria-label="Toggle theme" title="Toggle theme">
-                <img src="images/Themes/darkmode.svg" alt="Switch to Dark Mode" class="theme-icon theme-icon-dark">
-                <img src="images/Themes/lightmode.svg" alt="Switch to Light Mode" class="theme-icon theme-icon-light">
-            </button>
-            <div class="header-controls-right">
-                <nav class="nav-window">
-                    <ul class="nav-elements">
-                        <li><a href="index.html" id="nav-home">Home</a></li>
-                        <li><a href="about.html" id="nav-about">About</a></li>
-                        <li><a href="portfolio.html" id="nav-portfolio">Portfolio</a></li>
-                        <li><a href="contact.html" id="nav-contact">Contact</a></li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="hamburger-menu" id="hamburgerMenu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </header>
-        <div class="mobile-nav" id="mobileNav">
-            <ul class="mobile-nav-elements">
-                <li><a href="index.html" id="nav-home-mobile">Home</a></li>
-                <li><a href="about.html" id="nav-about-mobile">About</a></li>
-                <li><a href="portfolio.html" id="nav-portfolio-mobile">Portfolio</a></li>
-                <li><a href="contact.html" id="nav-contact-mobile">Contact</a></li>
-            </ul>
+<body>
+    <!-- Loading screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader">
+            <div class="loader-inner"></div>
         </div>
+    </div>
 
-        <main class="home-page">
-            <section class="hero">
-                <div class="hero-image">
-                    <img class="avatar" src="images/hero.png" alt="Cartoonish depiction of me" loading="lazy">
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <img src="images/logo.png" alt="codernoel logo" class="logo-image">
+            </a>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="#hero" class="nav-link" data-section="hero">Home</a>
+                <a href="#about" class="nav-link" data-section="about">About</a>
+                <a href="#projects" class="nav-link" data-section="projects">Work</a>
+                <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+            </div>
+            
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <span class="theme-icon theme-icon-light">☀️</span>
+                    <span class="theme-icon theme-icon-dark">🌙</span>
+                </button>
+                
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile menu overlay -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <a href="#hero" class="mobile-menu-link" data-section="hero">Home</a>
+            <a href="#about" class="mobile-menu-link" data-section="about">About</a>
+            <a href="#projects" class="mobile-menu-link" data-section="projects">Work</a>
+            <a href="#contact" class="mobile-menu-link" data-section="contact">Contact</a>
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <div class="hero-greeting">
+                            <span class="greeting-emoji">👋</span>
+                            <span class="greeting-text">Hello, I'm</span>
+                        </div>
+                        <h1 class="hero-title">
+                            <span class="title-line" style="color: var(--color-text);">Noel</span>
+                            <span class="title-line" style="background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">codernoel</span>
+                        </h1>
+                        <p class="hero-subtitle">
+                            Computer Science student at UQ, passionate about creating exceptional digital experiences 
+                            with modern technologies and innovative design. Building everything from smart shoe prototypes to SwiftUI apps.
+                        </p>
+                        <div class="hero-cta">
+                            <a href="#projects" class="btn btn-primary">
+                                <span>View My Work</span>
+                                <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+                                    <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                            <a href="#contact" class="btn btn-secondary">
+                                <span>Get In Touch</span>
+                            </a>
+                        </div>
+                        <div class="hero-scroll-indicator">
+                            <span>Scroll to explore</span>
+                            <div class="scroll-arrow">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M7 13L12 18L17 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="hero-image-container">
+                            <div class="hero-image-bg"></div>
+                            <img src="images/hero.png" alt="Professional portrait of Noel Shaju, Creative Developer" class="hero-image" loading="eager">
+                            <div class="hero-image-overlay"></div>
+                        </div>
+                        <div class="floating-elements">
+                            <div class="floating-element" data-speed="0.5">
+                                <div class="tech-badge">React</div>
+                            </div>
+                            <div class="floating-element" data-speed="0.8">
+                                <div class="tech-badge">JavaScript</div>
+                            </div>
+                            <div class="floating-element" data-speed="0.3">
+                                <div class="tech-badge">CSS</div>
+                            </div>
+                            <div class="floating-element" data-speed="0.6">
+                                <div class="tech-badge">Python</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="hero-text">
-                    <h1>Hey, I'm Noel.</h1>
-                    <h3>Discover my journey through design where simplicity and innovation converge.</h3>
-                    <a class="portfolio-button" href="portfolio.html">Explore My Projects</a>
+            </div>
+            <div class="hero-bg-pattern"></div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about" id="about">
+            <div class="about-container">
+                <div class="section-header">
+                    <span class="section-number">01</span>
+                    <h2 class="section-title">About Me</h2>
+                    <p class="section-subtitle">Passionate about creating meaningful digital experiences</p>
                 </div>
-            </section>
-        </main>
-        <footer>
-            <div class="footer-left">
-                <h3>Connect</h3>
-                <div class="social-links">
-                    <a href="https://github.com/codernoel" target="_blank" rel="noopener">
-                        <img src="images/footer/github.svg" alt="Github Link" loading="lazy">
-                    </a>
-                    <a href="https://linkedin.com/in/codernoel" target="_blank" rel="noopener">
-                        <img src="images/footer/linkedin.png" alt="LinkedIn Link" loading="lazy">
-                    </a>
-                    <a href="https://instagram.com/codernoel" target="_blank" rel="noopener">
-                        <img src="images/footer/instagram.svg" alt="Instagram Link" loading="lazy">
+                
+                <div class="about-content">
+                    <div class="about-text">
+                        <div class="about-description">
+                            <p>
+                                Hey! I'm Noel, known online as <strong>codernoel</strong>. I'm a Computer Science student 
+                                at the University of Queensland with over 5 years of programming experience. My journey started 
+                                with curiosity and has evolved into a passion for creating innovative digital solutions that 
+                                bridge creativity and functionality.
+                            </p>
+                            <p>
+                                From Python game development to modern web applications, I love exploring new technologies 
+                                and pushing the boundaries of what's possible. Whether it's building enhanced versions of 
+                                classic games or crafting responsive web experiences, I focus on clean code, intuitive design, 
+                                and user-centered development.
+                            </p>
+                        </div>
+                        
+                        <div class="skills-grid">
+                            <div class="skill-category">
+                                <h3>Frontend</h3>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">HTML5</span>
+                                    <span class="skill-tag">CSS3</span>
+                                    <span class="skill-tag">JavaScript</span>
+                                    <span class="skill-tag">React</span>
+                                    <span class="skill-tag">Bootstrap</span>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-category">
+                                <h3>Backend</h3>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">Python</span>
+                                    <span class="skill-tag">Java</span>
+                                    <span class="skill-tag">SQL</span>
+                                    <span class="skill-tag">Node.js</span>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-category">
+                                <h3>Tools</h3>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">Git</span>
+                                    <span class="skill-tag">VS Code</span>
+                                    <span class="skill-tag">Figma</span>
+                                    <span class="skill-tag">Terminal</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="6">0</div>
+                            <div class="stat-label">Projects Completed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="5">0</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="8">0</div>
+                            <div class="stat-label">Technologies</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects" id="projects">
+            <div class="projects-container">
+                <div class="section-header">
+                    <span class="section-number">02</span>
+                    <h2 class="section-title">Selected Work</h2>
+                    <p class="section-subtitle">A collection of projects that showcase my skills and passion</p>
+                </div>
+                
+                <div class="projects-grid">
+                    <article class="project-card featured" data-project="1">
+                        <div class="project-image">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250' viewBox='0 0 400 250'%3E%3Cdefs%3E%3ClinearGradient id='grad1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2306b6d4;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%236366f1;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='250' fill='url(%23grad1)' /%3E%3Ctext x='200' y='120' font-family='Arial, sans-serif' font-size='20' font-weight='bold' text-anchor='middle' fill='white'%3E👟 Smart Shoe%3C/text%3E%3Ctext x='200' y='145' font-family='Arial, sans-serif' font-size='14' text-anchor='middle' fill='rgba(255,255,255,0.8)'%3EProjected UI Prototype%3C/text%3E%3Ctext x='200' y='165' font-family='Arial, sans-serif' font-size='12' text-anchor='middle' fill='rgba(255,255,255,0.7)'%3EDECO2500 HCI Project%3C/text%3E%3C/svg%3E" alt="Smart Shoe prototype with projected UI" loading="lazy">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://github.com/CoderNoel/shoe-simulation" class="project-link" target="_blank" rel="noopener">
+                                        <svg viewBox="0 0 24 24" fill="none">
+                                            <path d="M9 19C4 20.5 4 16.5 2 16M22 16V21C22 21.5304 21.7893 22.0391 21.4142 22.4142C21.0391 22.7893 20.5304 23 20 23H4C3.46957 23 2.96086 22.7893 2.58579 22.4142C2.21071 22.0391 2 21.5304 2 21V16M22 16C22 15.4696 21.7893 14.9609 21.4142 14.5858C21.0391 14.2107 20.5304 14 20 14H4C3.46957 14 2.96086 14.2107 2.58579 14.5858C2.21071 14.9609 2 15.4696 2 16M16 6L12 2L8 6M12 2V14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-meta">
+                                <span class="project-type">HCI Research</span>
+                                <span class="project-year">2024</span>
+                            </div>
+                            <h3 class="project-title">Smart Shoe Simulation</h3>
+                            <p class="project-description">
+                                Smart Shoe prototype simulating projected UI controlled by foot movements for hands-free 
+                                workout tracking. Developed for DECO2500 HCI course focusing on innovative interaction design.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">HCI</span>
+                                <span class="tech-tag">Prototyping</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card" data-project="2">
+                        <div class="project-image">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250' viewBox='0 0 400 250'%3E%3Cdefs%3E%3ClinearGradient id='grad2' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23007AFF;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%235856D6;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='250' fill='url(%23grad2)' /%3E%3Ctext x='200' y='120' font-family='Arial, sans-serif' font-size='20' font-weight='bold' text-anchor='middle' fill='white'%3E🚀 SwiftUI Apps%3C/text%3E%3Ctext x='200' y='145' font-family='Arial, sans-serif' font-size='14' text-anchor='middle' fill='rgba(255,255,255,0.8)'%3EiOS Development Journey%3C/text%3E%3Ctext x='200' y='165' font-family='Arial, sans-serif' font-size='12' text-anchor='middle' fill='rgba(255,255,255,0.7)'%3EApple Developer Tutorials%3C/text%3E%3C/svg%3E" alt="SwiftUI Tutorials - iOS development projects" loading="lazy">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://github.com/CoderNoel/SwiftUI-Tutorials" class="project-link" target="_blank" rel="noopener">
+                                        <svg viewBox="0 0 24 24" fill="none">
+                                            <path d="M9 19C4 20.5 4 16.5 2 16M22 16V21C22 21.5304 21.7893 22.0391 21.4142 22.4142C21.0391 22.7893 20.5304 23 20 23H4C3.46957 23 2.96086 22.7893 2.58579 22.4142C2.21071 22.0391 2 21.5304 2 21V16M22 16C22 15.4696 21.7893 14.9609 21.4142 14.5858C21.0391 14.2107 20.5304 14 20 14H4C3.46957 14 2.96086 14.2107 2.58579 14.5858C2.21071 14.9609 2 15.4696 2 16M16 6L12 2L8 6M12 2V14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-meta">
+                                <span class="project-type">iOS Development</span>
+                                <span class="project-year">2024</span>
+                            </div>
+                            <h3 class="project-title">SwiftUI Tutorials</h3>
+                            <p class="project-description">
+                                A collection of SwiftUI projects built while following Apple's Develop in Swift tutorials. 
+                                Documenting my learning journey as I explore iOS app development with Swift and SwiftUI.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Swift</span>
+                                <span class="tech-tag">SwiftUI</span>
+                                <span class="tech-tag">iOS</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card" data-project="3">
+                        <div class="project-image">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250' viewBox='0 0 400 250'%3E%3Cdefs%3E%3ClinearGradient id='grad3' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2310b981;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%2306b6d4;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='250' fill='url(%23grad3)' /%3E%3Ctext x='200' y='120' font-family='Arial, sans-serif' font-size='20' font-weight='bold' text-anchor='middle' fill='white'%3E⭕ Fancy Tic Tac Toe%3C/text%3E%3Ctext x='200' y='145' font-family='Arial, sans-serif' font-size='14' text-anchor='middle' fill='rgba(255,255,255,0.8)'%3EStackable Markers Game%3C/text%3E%3Ctext x='200' y='165' font-family='Arial, sans-serif' font-size='12' text-anchor='middle' fill='rgba(255,255,255,0.7)'%3ECSSE1001 Assignment%3C/text%3E%3C/svg%3E" alt="Fancy Tic Tac Toe - Enhanced classic game implementation" loading="lazy">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://github.com/CoderNoel/Fancy-TicTacToe" class="project-link" target="_blank" rel="noopener">
+                                        <svg viewBox="0 0 24 24" fill="none">
+                                            <path d="M9 19C4 20.5 4 16.5 2 16M22 16V21C22 21.5304 21.7893 22.0391 21.4142 22.4142C21.0391 22.7893 20.5304 23 20 23H4C3.46957 23 2.96086 22.7893 2.58579 22.4142C2.21071 22.0391 2 21.5304 2 21V16M22 16C22 15.4696 21.7893 14.9609 21.4142 14.5858C21.0391 14.2107 20.5304 14 20 14H4C3.46957 14 2.96086 14.2107 2.58579 14.5858C2.21071 14.9609 2 15.4696 2 16M16 6L12 2L8 6M12 2V14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-meta">
+                                <span class="project-type">Game Development</span>
+                                <span class="project-year">2023</span>
+                            </div>
+                            <h3 class="project-title">Fancy Tic Tac Toe</h3>
+                            <p class="project-description">
+                                An assignment for CSSE1001/7030 at the University of Queensland. A unique take on 
+                                Tic-Tac-Toe allowing players to stack markers based on size, adding strategic depth 
+                                to the classic game with innovative gameplay mechanics.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">OOP</span>
+                                <span class="tech-tag">Game Logic</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card" data-project="4">
+                        <div class="project-image">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250' viewBox='0 0 400 250'%3E%3Cdefs%3E%3ClinearGradient id='grad4' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%236366f1;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%238b5cf6;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='250' fill='url(%23grad4)' /%3E%3Ctext x='200' y='120' font-family='Arial, sans-serif' font-size='20' font-weight='bold' text-anchor='middle' fill='white'%3E📱 Portfolio Website%3C/text%3E%3Ctext x='200' y='145' font-family='Arial, sans-serif' font-size='14' text-anchor='middle' fill='rgba(255,255,255,0.8)'%3EModern Web Design%3C/text%3E%3Ctext x='200' y='165' font-family='Arial, sans-serif' font-size='12' text-anchor='middle' fill='rgba(255,255,255,0.7)'%3EDECO1400 Project%3C/text%3E%3C/svg%3E" alt="Portfolio Website - Modern responsive design showcase" loading="lazy">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://github.com/CoderNoel/portfolio-website" class="project-link" target="_blank" rel="noopener">
+                                        <svg viewBox="0 0 24 24" fill="none">
+                                            <path d="M9 19C4 20.5 4 16.5 2 16M22 16V21C22 21.5304 21.7893 22.0391 21.4142 22.4142C21.0391 22.7893 20.5304 23 20 23H4C3.46957 23 2.96086 22.7893 2.58579 22.4142C2.21071 22.0391 2 21.5304 2 21V16M22 16C22 15.4696 21.7893 14.9609 21.4142 14.5858C21.0391 14.2107 20.5304 14 20 14H4C3.46957 14 2.96086 14.2107 2.58579 14.5858C2.21071 14.9609 2 15.4696 2 16M16 6L12 2L8 6M12 2V14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </a>
+                                    <a href="https://codernoel.com" class="project-link" target="_blank" rel="noopener">
+                                        <svg viewBox="0 0 24 24" fill="none">
+                                            <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-meta">
+                                <span class="project-type">Web Development</span>
+                                <span class="project-year">2024</span>
+                            </div>
+                            <h3 class="project-title">Portfolio Website</h3>
+                            <p class="project-description">
+                                Portfolio Website developed as part of DECO1400 course at University of Queensland. 
+                                Features modern design, responsive layout, smooth animations, and showcases my 
+                                development skills and projects.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card" data-project="5">
+                        <div class="project-image">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250' viewBox='0 0 400 250'%3E%3Cdefs%3E%3ClinearGradient id='grad5' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23f59e0b;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23ef4444;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='250' fill='url(%23grad5)' /%3E%3Ctext x='200' y='120' font-family='Arial, sans-serif' font-size='20' font-weight='bold' text-anchor='middle' fill='white'%3E🎮 Fancy Sokoban%3C/text%3E%3Ctext x='200' y='145' font-family='Arial, sans-serif' font-size='14' text-anchor='middle' fill='rgba(255,255,255,0.8)'%3EPuzzle Game Enhanced%3C/text%3E%3Ctext x='200' y='165' font-family='Arial, sans-serif' font-size='12' text-anchor='middle' fill='rgba(255,255,255,0.7)'%3ECSSE1001 Assignment%3C/text%3E%3C/svg%3E" alt="Fancy Sokoban - Enhanced puzzle game with Python" loading="lazy">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://github.com/CoderNoel/FancySokobhan" class="project-link" target="_blank" rel="noopener">
+                                        <svg viewBox="0 0 24 24" fill="none">
+                                            <path d="M9 19C4 20.5 4 16.5 2 16M22 16V21C22 21.5304 21.7893 22.0391 21.4142 22.4142C21.0391 22.7893 20.5304 23 20 23H4C3.46957 23 2.96086 22.7893 2.58579 22.4142C2.21071 22.0391 2 21.5304 2 21V16M22 16C22 15.4696 21.7893 14.9609 21.4142 14.5858C21.0391 14.2107 20.5304 14 20 14H4C3.46957 14 2.96086 14.2107 2.58579 14.5858C2.21071 14.9609 2 15.4696 2 16M16 6L12 2L8 6M12 2V14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-meta">
+                                <span class="project-type">Game Development</span>
+                                <span class="project-year">2023</span>
+                            </div>
+                            <h3 class="project-title">Fancy Sokoban</h3>
+                            <p class="project-description">
+                                Fancy Sokoban: A text-based adaptation of the classic Sokoban game with enhanced features, 
+                                including potion collection mechanics. Developed as part of the CSSE1001/CSSE7030 Assignment 
+                                with strategic gameplay and puzzle-solving elements.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">OOP</span>
+                                <span class="tech-tag">Game Logic</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card" data-project="6">
+                        <div class="project-image">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250' viewBox='0 0 400 250'%3E%3Cdefs%3E%3ClinearGradient id='grad6' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%238b5cf6;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23ec4899;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='250' fill='url(%23grad6)' /%3E%3Ctext x='200' y='120' font-family='Arial, sans-serif' font-size='20' font-weight='bold' text-anchor='middle' fill='white'%3E⚡ Pokemon Game%3C/text%3E%3Ctext x='200' y='145' font-family='Arial, sans-serif' font-size='14' text-anchor='middle' fill='rgba(255,255,255,0.8)'%3ETerminal Battle System%3C/text%3E%3Ctext x='200' y='165' font-family='Arial, sans-serif' font-size='12' text-anchor='middle' fill='rgba(255,255,255,0.7)'%3ECodecademy Project%3C/text%3E%3C/svg%3E" alt="Pokemon Terminal Game - Object-oriented battle system" loading="lazy">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://github.com/CoderNoel/Pokemon-Game" class="project-link" target="_blank" rel="noopener">
+                                        <svg viewBox="0 0 24 24" fill="none">
+                                            <path d="M9 19C4 20.5 4 16.5 2 16M22 16V21C22 21.5304 21.7893 22.0391 21.4142 22.4142C21.0391 22.7893 20.5304 23 20 23H4C3.46957 23 2.96086 22.7893 2.58579 22.4142C2.21071 22.0391 2 21.5304 2 21V16M22 16C22 15.4696 21.7893 14.9609 21.4142 14.5858C21.0391 14.2107 20.5304 14 20 14H4C3.46957 14 2.96086 14.2107 2.58579 14.5858C2.21071 14.9609 2 15.4696 2 16M16 6L12 2L8 6M12 2V14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-meta">
+                                <span class="project-type">Game Development</span>
+                                <span class="project-year">2023</span>
+                            </div>
+                            <h3 class="project-title">Pokemon Terminal Game</h3>
+                            <p class="project-description">
+                                A Pokemon terminal game as part of Codecademy project about Classes in Python. 
+                                Features turn-based battle system, health mechanics, and object-oriented programming 
+                                concepts including classes, inheritance, and polymorphism.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Classes</span>
+                                <span class="tech-tag">OOP</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                
+                <div class="projects-cta">
+                    <a href="https://github.com/codernoel" class="btn btn-outline" target="_blank" rel="noopener">
+                        <span>View All Projects</span>
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+                            <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                     </a>
                 </div>
             </div>
-            <div class="footer-right">
-                <h6 class="developed">Developed for the DECO1400 Project at UQ</h6>
-                <p>© 2025 Codernoel. All rights reserved.</p>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <div class="contact-container">
+                <div class="section-header">
+                    <span class="section-number">03</span>
+                    <h2 class="section-title">Let's Connect</h2>
+                    <p class="section-subtitle">Ready to bring your ideas to life? Let's start a conversation</p>
+                </div>
+                
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M3 8L10.89 13.26C11.2187 13.4793 11.6049 13.5963 12 13.5963C12.3951 13.5963 12.7813 13.4793 13.11 13.26L21 8M5 19H19C19.5304 19 20.0391 18.7893 20.4142 18.4142C20.7893 18.0391 21 17.5304 21 17V7C21 6.46957 20.7893 5.96086 20.4142 5.58579C20.0391 5.21071 19.5304 5 19 5H5C4.46957 5 3.96086 5.21071 3.58579 5.58579C3.21071 5.96086 3 6.46957 3 7V17C3 17.5304 3.21071 18.0391 3.58579 18.4142C3.96086 18.7893 4.46957 19 5 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Email</h3>
+                                <a href="mailto:contact@codernoel.com">contact@codernoel.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M16 8C16 10.2091 14.2091 12 12 12C9.79086 12 8 10.2091 8 8C8 5.79086 9.79086 4 12 4C14.2091 4 16 5.79086 16 8ZM12 14C16.4183 14 20 17.5817 20 22H4C4 17.5817 7.58172 14 12 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Social</h3>
+                                <div class="social-links">
+                                    <a href="https://github.com/codernoel" target="_blank" rel="noopener">GitHub</a>
+                                    <a href="https://linkedin.com/in/codernoel" target="_blank" rel="noopener">LinkedIn</a>
+                                    <a href="https://instagram.com/codernoel" target="_blank" rel="noopener">Instagram</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <form class="contact-form" id="contactForm" action="https://formspree.io/f/meojqeoq" method="POST">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary form-submit">
+                            <span class="btn-text">Send Message</span>
+                            <span class="btn-loading">Sending...</span>
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+                                <path d="M22 2L2 8.67L9.14 12.74L13.21 19.86L22 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        
+                        <div class="form-status" id="formStatus"></div>
+                    </form>
+                </div>
             </div>
-        </footer>
-        <button id="scrollTopBtn" class="scroll-top-button" aria-label="Scroll to top">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M12 4l-8 8h5v8h6v-8h5z"></path>
-            </svg>
-        </button>
-        <script src="script.js"></script>
-    </body>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p>&copy; 2025 codernoel (Noel). All rights reserved.</p>
+                    <p class="footer-note">Crafted with ❤️ for DECO1400 at UQ</p>
+                </div>
+                <div class="footer-right">
+                    <a href="#hero" class="back-to-top" id="backToTop">
+                        <span>Back to top</span>
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M7 11L12 6L17 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cursor follower -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+
+    <!-- Scripts -->
+    <script src="scripts/modern.js"></script>
+</body>
 </html>
