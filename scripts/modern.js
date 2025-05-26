@@ -242,10 +242,11 @@ class PortfolioApp {
             observer.observe(el);
         });
         
-        // Reset stat numbers to 0 initially
+        // Observe stat numbers separately for counter animation and reset to 0
         const statNumbers = document.querySelectorAll('.stat-number[data-count]');
-        statNumbers.forEach(stat => {
-            stat.textContent = '0';
+        statNumbers.forEach(statNumber => {
+            observer.observe(statNumber);
+            statNumber.textContent = '0';
         });
     }
 
@@ -266,6 +267,12 @@ class PortfolioApp {
     }
 
     animateCounter(element) {
+        // Prevent multiple animations on the same element
+        if (element.hasAttribute('data-animated')) {
+            return;
+        }
+        element.setAttribute('data-animated', 'true');
+        
         const target = parseInt(element.getAttribute('data-count'));
         const duration = 2000;
         const startTime = performance.now();

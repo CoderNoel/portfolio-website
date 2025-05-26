@@ -40,7 +40,8 @@
     <nav class="nav" id="nav">
         <div class="nav-container">
             <a href="#hero" class="nav-logo">
-                <img src="images/logo.png" alt="codernoel logo" class="logo-image">
+                <img src="images/logo.png" alt="codernoel logo" class="logo-image light-logo">
+                <img src="images/darkLogo.png" alt="codernoel logo" class="logo-image dark-logo">
             </a>
             
             <div class="nav-links" id="navLinks">
@@ -87,8 +88,7 @@
                             <span class="greeting-text">Hello, I'm</span>
                         </div>
                         <h1 class="hero-title">
-                            <span class="title-line" style="color: var(--color-text);">Noel</span>
-                            <span class="title-line" style="background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">codernoel</span>
+                            <span class="title-line glowing-name" data-text="Noel">Noel</span>
                         </h1>
                         <p class="hero-subtitle">
                             Computer Science student at UQ, passionate about creating exceptional digital experiences 
@@ -132,6 +132,15 @@
                             </div>
                             <div class="floating-element" data-speed="0.6">
                                 <div class="tech-badge">Python</div>
+                            </div>
+                            <div class="floating-element" data-speed="0.4">
+                                <div class="tech-badge">SwiftUI</div>
+                            </div>
+                            <div class="floating-element" data-speed="0.7">
+                                <div class="tech-badge">Flutter</div>
+                            </div>
+                            <div class="floating-element" data-speed="0.9">
+                                <div class="tech-badge">C++</div>
                             </div>
                         </div>
                     </div>
@@ -210,7 +219,7 @@
                             <div class="stat-label">Years Experience</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-number" data-count="8">0</div>
+                            <div class="stat-number" data-count="13">0</div>
                             <div class="stat-label">Technologies</div>
                         </div>
                     </div>
@@ -516,7 +525,7 @@
         <div class="footer-container">
             <div class="footer-content">
                 <div class="footer-left">
-                    <p>&copy; 2025 codernoel (Noel). All rights reserved.</p>
+                    <p>&copy; 2025 codernoel. All rights reserved.</p>
                     <p class="footer-note">Crafted with ❤️ for DECO1400 at UQ</p>
                 </div>
                 <div class="footer-right">

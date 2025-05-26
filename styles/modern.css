@@ -66,7 +66,7 @@
     
     /* Layout */
     --container-max-width: 1200px;
-    --header-height: 80px;
+    --header-height: 90px;
 }
 
 /* Dark Theme */
@@ -171,26 +171,26 @@ a:hover {
     left: 0;
     right: 0;
     z-index: 1000;
-    background: var(--glass-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--glass-border);
+    background: transparent;
     transition: all var(--transition-normal);
 }
 
 .nav.scrolled {
-    background: var(--color-bg);
-    box-shadow: var(--shadow-lg);
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
 }
 
 .nav-container {
     max-width: var(--container-max-width);
     margin: 0 auto;
-    padding: 0 var(--space-lg);
+    padding: 0 var(--space-xl);
     height: var(--header-height);
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: var(--space-lg);
 }
 
 .nav-logo {
@@ -219,7 +219,7 @@ a:hover {
 }
 
 .logo-image {
-    height: 40px;
+    height: 60px;
     width: auto;
     object-fit: contain;
     transition: all var(--transition-fast);
@@ -227,6 +227,23 @@ a:hover {
 
 .logo-image:hover {
     transform: scale(1.05);
+}
+
+/* Logo dark mode switching */
+.light-logo {
+    display: block;
+}
+
+.dark-logo {
+    display: none;
+}
+
+[data-theme="dark"] .light-logo {
+    display: none;
+}
+
+[data-theme="dark"] .dark-logo {
+    display: block;
 }
 
 /* Ensure the logo is always visible */
@@ -241,16 +258,19 @@ a:hover {
 
 .nav-links {
     display: flex;
-    gap: var(--space-xl);
+    gap: var(--space-2xl);
     align-items: center;
+    flex: 1;
+    justify-content: center;
 }
 
 .nav-link {
     position: relative;
     color: var(--color-text-secondary);
     font-weight: 500;
-    padding: var(--space-sm) 0;
+    padding: var(--space-sm) var(--space-md);
     transition: color var(--transition-fast);
+    white-space: nowrap;
 }
 
 .nav-link::after {
@@ -277,7 +297,8 @@ a:hover {
 .nav-controls {
     display: flex;
     align-items: center;
-    gap: var(--space-md);
+    gap: var(--space-lg);
+    flex-shrink: 0;
 }
 
 .theme-toggle {
@@ -458,6 +479,47 @@ a:hover {
     font-weight: 700;
 }
 
+.glowing-name {
+    color: var(--color-primary);
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary), var(--color-accent));
+    background-size: 200% 200%;
+    animation: slideInUp 0.8s ease forwards, glow 2s ease-in-out infinite 1s;
+    opacity: 1 !important;
+    visibility: visible !important;
+    z-index: 10;
+    text-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
+}
+
+/* Apply gradient text effect only in supported browsers */
+@supports (-webkit-background-clip: text) {
+    .glowing-name {
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        text-shadow: 0 0 10px rgba(99, 102, 241, 0.3),
+                     0 0 20px rgba(99, 102, 241, 0.2);
+    }
+    50% {
+        text-shadow: 0 0 15px rgba(99, 102, 241, 0.5),
+                     0 0 25px rgba(99, 102, 241, 0.3),
+                     0 0 35px rgba(99, 102, 241, 0.1);
+    }
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .glowing-name {
+    text-shadow: 0 0 12px rgba(99, 102, 241, 0.5),
+                 0 0 20px rgba(99, 102, 241, 0.3);
+}
+
 .title-line:nth-child(2) {
     background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
     -webkit-background-clip: text;
@@ -579,27 +641,45 @@ a:hover {
 }
 
 .floating-element:nth-child(1) {
-    top: 20%;
-    left: 10%;
+    top: 15%;
+    left: 15%;
     animation-delay: 0s;
 }
 
 .floating-element:nth-child(2) {
-    top: 60%;
-    right: 10%;
+    top: 65%;
+    right: 15%;
     animation-delay: 1s;
 }
 
 .floating-element:nth-child(3) {
-    top: 10%;
-    right: 30%;
+    top: 8%;
+    right: 25%;
     animation-delay: 2s;
 }
 
 .floating-element:nth-child(4) {
-    bottom: 20%;
-    left: 20%;
+    bottom: 25%;
+    left: 25%;
     animation-delay: 3s;
+}
+
+.floating-element:nth-child(5) {
+    top: 45%;
+    left: 8%;
+    animation-delay: 4s;
+}
+
+.floating-element:nth-child(6) {
+    bottom: 45%;
+    right: 8%;
+    animation-delay: 5s;
+}
+
+.floating-element:nth-child(7) {
+    top: 80%;
+    left: 45%;
+    animation-delay: 1.5s;
 }
 
 @keyframes float {
@@ -1360,8 +1440,17 @@ a:hover {
         --space-3xl: 2.5rem;
     }
     
+    .nav-container {
+        padding: 0 var(--space-lg);
+        gap: var(--space-md);
+    }
+    
     .nav-links {
         display: none;
+    }
+    
+    .nav-controls {
+        gap: var(--space-md);
     }
     
     .mobile-menu-toggle {
@@ -1371,6 +1460,30 @@ a:hover {
     .hero {
         min-height: 80vh;
         padding-top: var(--header-height);
+    }
+    
+    .hero-content {
+        text-align: center;
+    }
+    
+    .hero-greeting {
+        justify-content: center;
+    }
+    
+    .hero-title {
+        text-align: center;
+    }
+    
+    .glowing-name {
+        font-size: 2.5rem !important;
+        display: block !important;
+        text-align: center !important;
+        margin: 0 auto !important;
+        line-height: 1.2 !important;
+        width: 100% !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        color: var(--color-primary) !important;
     }
     
     .hero-container {
@@ -1448,7 +1561,46 @@ a:hover {
     }
     
     .floating-elements {
-        display: none;
+        display: block;
+    }
+    
+    .floating-element {
+        transform: scale(0.8);
+    }
+    
+    .floating-element:nth-child(1) {
+        top: 10%;
+        left: 10%;
+    }
+    
+    .floating-element:nth-child(2) {
+        top: 70%;
+        right: 10%;
+    }
+    
+    .floating-element:nth-child(3) {
+        top: 5%;
+        right: 20%;
+    }
+    
+    .floating-element:nth-child(4) {
+        bottom: 30%;
+        left: 20%;
+    }
+    
+    .floating-element:nth-child(5) {
+        top: 40%;
+        left: 5%;
+    }
+    
+    .floating-element:nth-child(6) {
+        bottom: 50%;
+        right: 5%;
+    }
+    
+    .floating-element:nth-child(7) {
+        top: 85%;
+        left: 40%;
     }
     
     .projects-grid {
