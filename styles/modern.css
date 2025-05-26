@@ -179,15 +179,15 @@ a:hover {
     left: 0;
     right: 0;
     z-index: 1000;
-    background: var(--glass-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--glass-border);
+    background: transparent;
     transition: all var(--transition-normal);
 }
 
 .nav.scrolled {
-    background: var(--color-bg);
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
     box-shadow: var(--shadow-lg);
 }
 
@@ -228,7 +228,7 @@ a:hover {
 }
 
 .logo-image {
-    height: 40px;
+    height: 55px;
     width: auto;
     object-fit: contain;
     transition: all var(--transition-fast);
@@ -293,10 +293,12 @@ a:hover {
 }
 
 .theme-toggle {
-    background: none;
-    border: none;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
     padding: var(--space-sm);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
     cursor: pointer;
     color: var(--color-text-secondary);
     transition: all var(--transition-fast);
@@ -305,8 +307,10 @@ a:hover {
 }
 
 .theme-toggle:hover {
-    background: var(--color-bg-secondary);
+    background: var(--color-primary);
+    color: white;
     transform: scale(1.1);
+    box-shadow: 0 4px 15px var(--glow-color);
 }
 
 .theme-icon {
@@ -363,8 +367,9 @@ a:hover {
     right: 0;
     bottom: 0;
     background: var(--glass-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border-top: 1px solid var(--glass-border);
     z-index: 999;
     opacity: 0;
     visibility: hidden;
@@ -390,14 +395,20 @@ a:hover {
     font-size: 1.5rem;
     font-weight: 500;
     color: var(--color-text);
-    padding: var(--space-md);
-    border-radius: var(--radius-lg);
+    padding: var(--space-md) var(--space-xl);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
     transition: all var(--transition-fast);
 }
 
 .mobile-menu-link:hover {
-    background: var(--color-bg-secondary);
+    background: var(--color-primary);
+    color: white;
     transform: translateY(-2px);
+    box-shadow: 0 4px 15px var(--glow-color);
 }
 
 /* Hero Section */
@@ -483,6 +494,43 @@ a:hover {
 @keyframes slideInUp {
     to {
         transform: translateY(0);
+    }
+}
+
+/* Glowing glassmorphic text effect */
+.glowing-text {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    text-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+    animation: glowPulse 3s ease-in-out infinite;
+    color: var(--color-text); /* Fallback for browsers that don't support background-clip */
+}
+
+.glowing-text::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: blur(3px);
+    z-index: -1;
+    opacity: 0.7;
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        text-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 40px rgba(99, 102, 241, 0.8), 0 0 60px rgba(6, 182, 212, 0.4);
     }
 }
 
@@ -649,7 +697,13 @@ a:hover {
     font-size: 0.875rem;
     font-weight: 500;
     color: var(--color-text);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--glass-shadow);
+    transition: all var(--transition-fast);
+}
+
+.tech-badge:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-lg), 0 0 0 1px var(--glow-border), 0 0 15px var(--glow-color);
 }
 
 .hero-bg-pattern {
@@ -709,19 +763,25 @@ a:hover {
 }
 
 .btn-secondary {
-    background: transparent;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     color: var(--color-text);
-    border: 2px solid var(--color-border);
+    border: 2px solid var(--glass-border);
 }
 
 .btn-secondary:hover {
-    background: var(--color-bg-secondary);
+    background: var(--color-primary);
+    color: white;
     border-color: var(--color-primary);
     transform: translateY(-2px);
+    box-shadow: var(--shadow-lg), 0 0 0 1px var(--glow-border), 0 0 15px var(--glow-color);
 }
 
 .btn-outline {
-    background: transparent;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     color: var(--color-primary);
     border: 2px solid var(--color-primary);
 }
@@ -730,6 +790,7 @@ a:hover {
     background: var(--color-primary);
     color: white;
     transform: translateY(-2px);
+    box-shadow: var(--shadow-lg), 0 0 0 1px var(--glow-border), 0 0 15px var(--glow-color);
 }
 
 .btn-icon {
@@ -757,10 +818,20 @@ a:hover {
     font-family: var(--font-family-mono);
     font-size: 0.875rem;
     color: var(--color-primary);
-    background: var(--color-bg-secondary);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
     padding: var(--space-xs) var(--space-md);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
     margin-bottom: var(--space-md);
+    font-weight: 600;
+    transition: all var(--transition-fast);
+}
+
+.section-number:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px var(--glow-color);
 }
 
 .section-title {
@@ -818,20 +889,25 @@ a:hover {
 }
 
 .skill-tag {
-    background: var(--color-bg);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     color: var(--color-text-secondary);
     padding: var(--space-xs) var(--space-md);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
     font-size: 0.875rem;
     font-weight: 500;
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--glass-border);
     transition: all var(--transition-fast);
+    position: relative;
+    overflow: hidden;
 }
 
 .skill-tag:hover {
     background: var(--color-primary);
     color: white;
     transform: translateY(-2px);
+    box-shadow: 0 4px 15px var(--glow-color);
 }
 
 .about-stats {
@@ -843,14 +919,21 @@ a:hover {
 .stat-item {
     text-align: center;
     padding: var(--space-xl);
-    background: var(--color-bg);
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-md);
-    transition: transform var(--transition-normal);
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--glass-shadow);
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
 }
 
 .stat-item:hover {
     transform: translateY(-5px);
+    box-shadow: var(--shadow-2xl), 0 0 0 1px var(--glow-border), 0 0 20px var(--glow-color);
+    border-color: var(--glow-border);
 }
 
 .stat-number {
@@ -884,17 +967,21 @@ a:hover {
 }
 
 .project-card {
-    background: var(--color-bg);
-    border-radius: var(--radius-xl);
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-2xl);
     overflow: hidden;
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--glass-shadow);
     transition: all var(--transition-normal);
-    border: 1px solid var(--color-border);
+    position: relative;
 }
 
 .project-card:hover {
     transform: translateY(-10px);
-    box-shadow: var(--shadow-2xl);
+    box-shadow: var(--shadow-2xl), 0 0 0 1px var(--glow-border), 0 0 20px var(--glow-color);
+    border-color: var(--glow-border);
 }
 
 .project-card.featured {
@@ -952,6 +1039,7 @@ a:hover {
     color: white;
     transition: all var(--transition-fast);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .project-link:hover {
@@ -1010,12 +1098,16 @@ a:hover {
 }
 
 .tech-tag {
-    background: var(--color-bg-secondary);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     color: var(--color-text-secondary);
     padding: var(--space-xs) var(--space-sm);
-    border-radius: var(--radius-sm);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
     font-size: 0.75rem;
     font-weight: 500;
+    transition: all var(--transition-fast);
 }
 
 .projects-cta {
@@ -1138,6 +1230,9 @@ a:hover {
 }
 
 .social-links a {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
     padding: var(--space-md) var(--space-lg);
     background: var(--glass-bg);
     backdrop-filter: blur(10px);
@@ -1150,6 +1245,55 @@ a:hover {
     overflow: hidden;
     text-decoration: none;
     color: var(--color-text-secondary);
+}
+
+.social-icon {
+    width: 20px;
+    height: 20px;
+    transition: all var(--transition-fast);
+}
+
+/* Specific social icon styling */
+.github-icon {
+    color: var(--color-text-secondary);
+}
+
+.linkedin-icon {
+    object-fit: contain;
+    filter: brightness(0) saturate(100%) invert(41%) sepia(7%) saturate(695%) hue-rotate(202deg) brightness(94%) contrast(87%);
+}
+
+[data-theme="dark"] .linkedin-icon {
+    filter: brightness(0) saturate(100%) invert(81%) sepia(8%) saturate(469%) hue-rotate(202deg) brightness(93%) contrast(86%);
+}
+
+.x-icon {
+    color: var(--color-text-secondary);
+}
+
+.instagram-icon {
+    color: var(--color-text-secondary);
+}
+
+/* Social links hover effects for specific icons */
+.social-links a:hover .github-icon {
+    color: #ffffff;
+}
+
+.social-links a:hover .linkedin-icon {
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
+}
+
+.social-links a:hover .x-icon {
+    color: #ffffff;
+}
+
+.social-links a:hover .instagram-icon {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: #ffffff; /* Fallback */
 }
 
 .social-links a::before {
@@ -1314,12 +1458,20 @@ a:hover {
     gap: var(--space-sm);
     color: var(--color-text-secondary);
     font-weight: 500;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-lg);
     transition: all var(--transition-fast);
 }
 
 .back-to-top:hover {
-    color: var(--color-primary);
+    background: var(--color-primary);
+    color: white;
     transform: translateY(-2px);
+    box-shadow: 0 4px 15px var(--glow-color);
 }
 
 .back-to-top svg {
@@ -1566,6 +1718,10 @@ a:hover {
 }
 
 @media (max-width: 480px) {
+    .logo-image {
+        height: 40px; /* Keep smaller on mobile */
+    }
+    
     .hero-title {
         font-size: 2.5rem;
     }
@@ -1580,7 +1736,65 @@ a:hover {
     }
     
     .floating-elements {
-        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        z-index: 1;
+    }
+    
+    .floating-element {
+        position: absolute;
+        animation: float 6s ease-in-out infinite;
+    }
+    
+    .floating-element:nth-child(1) {
+        top: 10%;
+        left: 5%;
+        animation-delay: 0s;
+    }
+    
+    .floating-element:nth-child(2) {
+        top: 70%;
+        right: 5%;
+        animation-delay: 1s;
+    }
+    
+    .floating-element:nth-child(3) {
+        top: 5%;
+        right: 20%;
+        animation-delay: 2s;
+    }
+    
+    .floating-element:nth-child(4) {
+        bottom: 10%;
+        left: 10%;
+        animation-delay: 3s;
+    }
+    
+    .floating-element:nth-child(5) {
+        top: 30%;
+        left: 2%;
+        animation-delay: 4s;
+    }
+    
+    .floating-element:nth-child(6) {
+        bottom: 30%;
+        right: 2%;
+        animation-delay: 5s;
+    }
+    
+    .floating-element:nth-child(7) {
+        top: 50%;
+        left: 40%;
+        animation-delay: 1.5s;
+    }
+    
+    .tech-badge {
+        font-size: 0.75rem;
+        padding: var(--space-xs) var(--space-sm);
     }
     
     .projects-grid {

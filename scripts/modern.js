@@ -82,6 +82,18 @@ class PortfolioApp {
         if (themeToggle) {
             themeToggle.setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`);
         }
+        
+        // Update logo based on theme
+        const logoImage = document.getElementById('logoImage');
+        if (logoImage) {
+            if (theme === 'dark') {
+                logoImage.src = 'images/darkLogo.png';
+                logoImage.alt = 'codernoel logo - dark mode';
+            } else {
+                logoImage.src = 'images/logo.png';
+                logoImage.alt = 'codernoel logo - light mode';
+            }
+        }
     }
 
     // Navigation
