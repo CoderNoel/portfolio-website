@@ -24,8 +24,10 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     
-    <!-- Theme color for mobile browsers -->
-    <meta name="theme-color" content="#000000">
+    <!-- Theme color for mobile browsers and tab bars -->
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f8fafc" id="themeColorMeta">
 </head>
 
 <body>
@@ -87,7 +89,7 @@
                             <span class="greeting-text">Hello, I'm</span>
                         </div>
                         <h1 class="hero-title">
-                            <span class="title-line glowing-text">Noel</span>
+                            <span class="title-line glowing-text" data-text="Noel">Noel</span>
                         </h1>
                         <p class="hero-subtitle">
                             Computer Science student at UQ, passionate about creating exceptional digital experiences 

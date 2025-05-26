@@ -208,6 +208,9 @@ a:hover {
     color: var(--color-text);
     text-decoration: none;
     transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    height: 100%;
 }
 
 .nav-logo:hover {
@@ -468,12 +471,15 @@ a:hover {
     color: var(--color-text);
     opacity: 0;
     animation: fadeInUp 0.8s ease 0.4s forwards;
+    line-height: 1.1;
+    margin-top: 0;
 }
 
 .title-line {
     display: block;
-    transform: translateY(100px);
-    animation: slideInUp 0.8s ease forwards;
+    line-height: 1.1;
+    margin-bottom: 0;
+    margin-top: 0;
 }
 
 .title-line:nth-child(1) {
@@ -503,27 +509,17 @@ a:hover {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    position: relative;
     text-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
     animation: glowPulse 3s ease-in-out infinite;
     color: var(--color-text); /* Fallback for browsers that don't support background-clip */
+    display: block;
+    line-height: 1.1;
+    margin: 0;
+    padding: 0;
+    position: relative;
 }
 
-.glowing-text::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    filter: blur(3px);
-    z-index: -1;
-    opacity: 0.7;
-}
+
 
 @keyframes glowPulse {
     0%, 100% {
@@ -675,8 +671,8 @@ a:hover {
 }
 
 .floating-element:nth-child(7) {
-    top: 75%;
-    left: 50%;
+    top: 95%;
+    right: 45%;
     animation-delay: 1.5s;
 }
 
@@ -974,13 +970,14 @@ a:hover {
     border-radius: var(--radius-2xl);
     overflow: hidden;
     box-shadow: var(--glass-shadow);
-    transition: all var(--transition-normal);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     position: relative;
+    will-change: transform;
 }
 
 .project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-2xl), 0 0 0 1px var(--glow-border), 0 0 20px var(--glow-color);
+    transform: translate3d(0, -10px, 0);
+    box-shadow: var(--shadow-2xl), 0 0 0 1px var(--glow-border), 0 0 15px var(--glow-color);
     border-color: var(--glow-border);
 }
 
@@ -998,11 +995,12 @@ a:hover {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform var(--transition-slow);
+    transition: transform 0.4s ease;
+    will-change: transform;
 }
 
 .project-card:hover .project-image img {
-    transform: scale(1.1);
+    transform: scale3d(1.05, 1.05, 1);
 }
 
 .project-overlay {
@@ -1016,11 +1014,13 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: opacity var(--transition-normal);
+    transition: opacity 0.3s ease;
+    pointer-events: none;
 }
 
 .project-card:hover .project-overlay {
-    opacity: 0.9;
+    opacity: 0.85;
+    pointer-events: auto;
 }
 
 .project-links {
@@ -1037,14 +1037,15 @@ a:hover {
     background: rgba(255, 255, 255, 0.2);
     border-radius: var(--radius-lg);
     color: white;
-    transition: all var(--transition-fast);
+    transition: background 0.2s ease, transform 0.2s ease;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    will-change: transform;
 }
 
 .project-link:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.35);
+    transform: scale3d(1.08, 1.08, 1);
 }
 
 .project-link svg {
@@ -1099,15 +1100,15 @@ a:hover {
 
 .tech-tag {
     background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     color: var(--color-text-secondary);
     padding: var(--space-xs) var(--space-sm);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-md);
     font-size: 0.75rem;
     font-weight: 500;
-    transition: all var(--transition-fast);
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
 .projects-cta {
@@ -1493,9 +1494,11 @@ a:hover {
     border-radius: 50%;
     pointer-events: none;
     z-index: 9999;
-    transition: all 0.1s ease;
-    transform: translate(-50%, -50%);
+    transform: translate3d(0, 0, 0) translate(-50%, -50%);
     opacity: 0;
+    will-change: transform, opacity;
+    /* Remove transition for smoother JS animation */
+    transition: opacity 0.2s ease, background 0.2s ease, border 0.2s ease;
 }
 
 .cursor-dot {
@@ -1506,9 +1509,11 @@ a:hover {
     border-radius: 50%;
     pointer-events: none;
     z-index: 9999;
-    transition: all 0.1s ease;
-    transform: translate(-50%, -50%);
+    transform: translate3d(0, 0, 0) translate(-50%, -50%);
     opacity: 0;
+    will-change: transform, opacity;
+    /* Remove transition for smoother JS animation */
+    transition: opacity 0.2s ease, background 0.2s ease;
 }
 
 .cursor.active {
@@ -1520,8 +1525,9 @@ a:hover {
 }
 
 .cursor.hover {
-    transform: translate(-50%, -50%) scale(1.5);
+    /* Scale will be handled by JS to maintain smooth animation */
     background: rgba(99, 102, 241, 0.1);
+    border-width: 3px;
 }
 
 /* Animations */
@@ -1787,8 +1793,8 @@ a:hover {
     }
     
     .floating-element:nth-child(7) {
-        top: 50%;
-        left: 40%;
+        bottom: 8%;
+        right: 48%;
         animation-delay: 1.5s;
     }
     
@@ -1890,6 +1896,17 @@ textarea:focus,
 .loading {
     pointer-events: none;
     opacity: 0.7;
+}
+
+/* Performance optimizations */
+.project-card,
+.project-image img,
+.project-link,
+.cursor,
+.cursor-dot {
+    backface-visibility: hidden;
+    perspective: 1000px;
+    transform-style: preserve-3d;
 }
 
 /* Utility classes */

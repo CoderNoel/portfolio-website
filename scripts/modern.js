@@ -94,6 +94,16 @@ class PortfolioApp {
                 logoImage.alt = 'codernoel logo - light mode';
             }
         }
+        
+        // Update theme color for browser tabs (Safari, Arc, etc.)
+        const themeColorMeta = document.getElementById('themeColorMeta');
+        if (themeColorMeta) {
+            if (theme === 'dark') {
+                themeColorMeta.setAttribute('content', '#0f172a');
+            } else {
+                themeColorMeta.setAttribute('content', '#f8fafc');
+            }
+        }
     }
 
     // Navigation
@@ -340,49 +350,95 @@ class PortfolioApp {
                 let cursorY = 0;
                 let dotX = 0;
                 let dotY = 0;
+                let isActive = false;
+                let animationId = null;
                 
+                // Simplified mousemove without throttling for now
                 document.addEventListener('mousemove', (e) => {
                     mouseX = e.clientX;
                     mouseY = e.clientY;
                     
-                    cursor.classList.add('active');
-                    cursorDot.classList.add('active');
-                });
+                    if (!isActive) {
+                        cursor.classList.add('active');
+                        cursorDot.classList.add('active');
+                        isActive = true;
+                        
+                        // Start animation loop
+                        animateCursor();
+                    }
+                }, { passive: true });
                 
                 document.addEventListener('mouseleave', () => {
                     cursor.classList.remove('active');
                     cursorDot.classList.remove('active');
+                    isActive = false;
+                    
+                    // Stop animation when not needed
+                    if (animationId) {
+                        cancelAnimationFrame(animationId);
+                        animationId = null;
+                    }
                 });
                 
-                // Hover effects
-                const hoverElements = document.querySelectorAll('a, button, .project-card, .skill-tag');
+                // Optimized hover effects with delegation
+                let isHovering = false;
                 
-                hoverElements.forEach(element => {
-                    element.addEventListener('mouseenter', () => {
+                document.addEventListener('mouseenter', (e) => {
+                    if (e.target.matches('a, button, .project-card, .skill-tag')) {
                         cursor.classList.add('hover');
-                    });
-                    
-                    element.addEventListener('mouseleave', () => {
-                        cursor.classList.remove('hover');
-                    });
-                });
+                        isHovering = true;
+                    }
+                }, true);
                 
-                // Animate cursor
+                document.addEventListener('mouseleave', (e) => {
+                    if (e.target.matches('a, button, .project-card, .skill-tag')) {
+                        cursor.classList.remove('hover');
+                        isHovering = false;
+                    }
+                }, true);
+                
+                // Optimized cursor animation with GPU acceleration
                 const animateCursor = () => {
-                    cursorX += (mouseX - cursorX) * 0.1;
-                    cursorY += (mouseY - cursorY) * 0.1;
-                    dotX += (mouseX - dotX) * 0.15;
-                    dotY += (mouseY - dotY) * 0.15;
+                    // Use easing for smoother movement
+                    const ease = 0.12;
+                    const dotEase = 0.18;
                     
-                    cursor.style.left = cursorX + 'px';
-                    cursor.style.top = cursorY + 'px';
-                    cursorDot.style.left = dotX + 'px';
-                    cursorDot.style.top = dotY + 'px';
+                    const oldCursorX = cursorX;
+                    const oldCursorY = cursorY;
+                    const oldDotX = dotX;
+                    const oldDotY = dotY;
                     
-                    requestAnimationFrame(animateCursor);
+                    cursorX += (mouseX - cursorX) * ease;
+                    cursorY += (mouseY - cursorY) * ease;
+                    dotX += (mouseX - dotX) * dotEase;
+                    dotY += (mouseY - dotY) * dotEase;
+                    
+                    // Only update if there's significant movement
+                    const threshold = 0.1;
+                    if (Math.abs(cursorX - oldCursorX) > threshold || 
+                        Math.abs(cursorY - oldCursorY) > threshold ||
+                        Math.abs(dotX - oldDotX) > threshold ||
+                        Math.abs(dotY - oldDotY) > threshold) {
+                        
+                        // Use transform for GPU acceleration
+                        const scale = isHovering ? 1.4 : 1;
+                        cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) translate(-50%, -50%) scale(${scale})`;
+                        cursorDot.style.transform = `translate3d(${dotX}px, ${dotY}px, 0) translate(-50%, -50%)`;
+                    }
+                    
+                    // Only continue animation if cursor is active
+                    if (isActive) {
+                        animationId = requestAnimationFrame(animateCursor);
+                    } else {
+                        animationId = null;
+                    }
                 };
                 
-                animateCursor();
+                // Initialize positions
+                cursorX = mouseX;
+                cursorY = mouseY;
+                dotX = mouseX;
+                dotY = mouseY;
             }
         }
     }
