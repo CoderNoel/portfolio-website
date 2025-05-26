@@ -947,12 +947,29 @@ a:hover {
 /* Projects Section */
 .projects {
     padding: var(--space-3xl) 0;
+    background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.projects::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
+    pointer-events: none;
 }
 
 .projects-container {
     max-width: var(--container-max-width);
     margin: 0 auto;
     padding: 0 var(--space-lg);
+    position: relative;
+    z-index: 1;
 }
 
 .projects-grid {
@@ -970,14 +987,13 @@ a:hover {
     border-radius: var(--radius-2xl);
     overflow: hidden;
     box-shadow: var(--glass-shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    transition: all var(--transition-normal);
     position: relative;
-    will-change: transform;
 }
 
 .project-card:hover {
-    transform: translate3d(0, -10px, 0);
-    box-shadow: var(--shadow-2xl), 0 0 0 1px var(--glow-border), 0 0 15px var(--glow-color);
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-2xl), 0 0 0 1px var(--glow-border), 0 0 20px var(--glow-color);
     border-color: var(--glow-border);
 }
 
@@ -1100,15 +1116,22 @@ a:hover {
 
 .tech-tag {
     background: var(--glass-bg);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     color: var(--color-text-secondary);
     padding: var(--space-xs) var(--space-sm);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-md);
     font-size: 0.75rem;
     font-weight: 500;
-    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    transition: all var(--transition-fast);
+}
+
+.tech-tag:hover {
+    background: var(--color-primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px var(--glow-color);
 }
 
 .projects-cta {
