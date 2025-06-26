@@ -703,6 +703,10 @@ a:hover {
     color: var(--color-text);
     box-shadow: var(--glass-shadow);
     transition: all var(--transition-fast);
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .tech-badge:hover {
@@ -1890,8 +1894,7 @@ a:hover {
     
     .tech-badge {
         font-size: 0.8rem;
-        padding: var(--space-xs) var(--space-md);
-        white-space: nowrap;
+        padding: calc(var(--space-sm) * 0.8) var(--space-md);
     }
 }
 
@@ -1998,8 +2001,7 @@ a:hover {
     
     .tech-badge {
         font-size: 0.75rem;
-        padding: var(--space-xs) var(--space-sm);
-        white-space: nowrap;
+        padding: calc(var(--space-sm) * 0.7) calc(var(--space-md) * 0.8);
     }
 }
 
@@ -2092,8 +2094,7 @@ a:hover {
     
     .tech-badge {
         font-size: 0.75rem;
-        padding: var(--space-xs) var(--space-sm);
-        white-space: nowrap;
+        padding: calc(var(--space-sm) * 0.7) calc(var(--space-md) * 0.8);
     }
 }
 
@@ -2186,8 +2187,7 @@ a:hover {
     
     .tech-badge {
         font-size: 0.7rem;
-        padding: var(--space-xs) var(--space-sm);
-        white-space: nowrap;
+        padding: calc(var(--space-sm) * 0.6) calc(var(--space-md) * 0.7);
     }
     
     .projects-grid {
@@ -2302,8 +2302,7 @@ a:hover {
     
     .tech-badge {
         font-size: 0.65rem;
-        padding: calc(var(--space-xs) * 0.8) var(--space-xs);
-        white-space: nowrap;
+        padding: calc(var(--space-sm) * 0.5) calc(var(--space-md) * 0.6);
     }
     
     .projects-grid {
