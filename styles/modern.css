@@ -1728,6 +1728,13 @@ a:hover {
         margin: 0 auto;
     }
     
+    /* Contact form submit button full width on mobile */
+    .form-submit {
+        width: 100% !important;
+        max-width: none !important;
+        justify-content: center;
+    }
+    
     /* Floating elements stay relative to hero image - no repositioning needed */
 }
 
@@ -1743,6 +1750,13 @@ a:hover {
     
     .nav-container {
         padding: 0 var(--space-lg);
+    }
+    
+    /* Ensure submit button spans full width on smaller screens */
+    .form-submit {
+        width: 100% !important;
+        max-width: none !important;
+        justify-content: center;
     }
 }
 
@@ -2050,6 +2064,12 @@ a:hover {
         font-size: 1rem;
     }
     
+    .form-submit {
+        width: 100% !important;
+        max-width: none !important;
+        justify-content: center;
+    }
+    
     .hero-image-container {
         width: 200px;
         height: 260px;
@@ -2143,6 +2163,12 @@ a:hover {
         font-size: 0.95rem;
     }
     
+    .form-submit {
+        width: 100% !important;
+        max-width: none !important;
+        justify-content: center;
+    }
+    
     .hero-image-container {
         width: 180px;
         height: 240px;
@@ -2187,7 +2213,7 @@ a:hover {
     
     .tech-badge {
         font-size: 0.7rem;
-        padding: calc(var(--space-sm) * 0.6) calc(var(--space-md) * 0.7);
+        padding: calc(var(--space-sm) * 0.5) calc(var(--space-md) * 0.6);
     }
     
     .projects-grid {
@@ -2256,6 +2282,12 @@ a:hover {
         max-width: 260px;
         padding: var(--space-sm) var(--space-md);
         font-size: 0.9rem;
+    }
+    
+    .form-submit {
+        width: 100% !important;
+        max-width: none !important;
+        justify-content: center;
     }
     
     .hero-image-container {
