@@ -38,10 +38,10 @@ class PortfolioApp {
     initLoadingScreen() {
         const loadingScreen = document.getElementById('loadingScreen');
         
-        // Ensure minimum loading time for smooth experience
+        // Ensure minimal loading time but keep snappy UX
         setTimeout(() => {
             this.hideLoadingScreen();
-        }, 1500);
+        }, 800);
     }
 
     hideLoadingScreen() {
@@ -53,7 +53,7 @@ class PortfolioApp {
             // Trigger initial animations
             setTimeout(() => {
                 this.revealElements();
-            }, 300);
+            }, 200);
         }
     }
 
@@ -133,6 +133,11 @@ class PortfolioApp {
         window.addEventListener('scroll', () => {
             this.updateActiveNavLink();
         });
+
+        // Ensure first link has aria-current initially
+        navLinks.forEach(link => link.removeAttribute('aria-current'));
+        const homeLink = document.querySelector('.nav-link[data-section="hero"]');
+        if (homeLink) homeLink.setAttribute('aria-current', 'page');
     }
 
     updateActiveNavLink() {
@@ -150,8 +155,12 @@ class PortfolioApp {
         
         navLinks.forEach(link => {
             link.classList.remove('active');
+            link.removeAttribute('aria-current');
             if (link.getAttribute('data-section') === currentSection) {
                 link.classList.add('active');
+                if (link.classList.contains('nav-link')) {
+                    link.setAttribute('aria-current', 'page');
+                }
             }
         });
     }
@@ -195,6 +204,7 @@ class PortfolioApp {
         
         mobileMenu.classList.add('active');
         mobileMenuToggle.classList.add('active');
+        mobileMenuToggle.setAttribute('aria-expanded', 'true');
         document.body.style.overflow = 'hidden';
     }
 
@@ -204,6 +214,7 @@ class PortfolioApp {
         
         mobileMenu.classList.remove('active');
         mobileMenuToggle.classList.remove('active');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = 'auto';
     }
 
@@ -213,21 +224,21 @@ class PortfolioApp {
         
         links.forEach(link => {
             link.addEventListener('click', (e) => {
-                e.preventDefault();
-                
                 const targetId = link.getAttribute('href').substring(1);
                 const targetElement = document.getElementById(targetId);
+
+                if (!targetElement) return;
+
+                e.preventDefault();
                 
-                if (targetElement) {
-                    const headerOffset = 80;
-                    const elementPosition = targetElement.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                    
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-                }
+                const headerOffset = 80;
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
             });
         });
     }
@@ -330,7 +341,7 @@ class PortfolioApp {
             const scrolled = window.pageYOffset;
             
             floatingElements.forEach(element => {
-                const speed = element.getAttribute('data-speed') || 0.5;
+                const speed = parseFloat(element.getAttribute('data-speed')) || 0.5;
                 const yPos = -(scrolled * speed);
                 element.style.transform = `translateY(${yPos}px)`;
             });

@@ -137,6 +137,23 @@ a:hover {
     color: var(--color-primary-dark);
 }
 
+/* Accessible Skip Link */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: var(--color-primary);
+    color: #ffffff;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    z-index: 10000;
+    transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+    top: 10px;
+}
+
 /* Loading Screen */
 .loading-screen {
     position: fixed;
@@ -630,6 +647,10 @@ a:hover {
 
 .floating-element {
     position: absolute;
+}
+
+/* Compose float animation on child so parent can use transform for JS parallax */
+.floating-element .tech-badge {
     animation: float 6s ease-in-out infinite;
 }
 
@@ -2366,7 +2387,7 @@ a:hover {
     .btn-secondary,
     .tech-badge {
         background: var(--color-text);
-        color: var(--color-background);
+        color: var(--color-bg);
         border-color: var(--color-text);
     }
 }

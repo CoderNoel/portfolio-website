@@ -17,9 +17,13 @@
     <meta name="description" content="Noel Shaju - Creative Developer specializing in modern web experiences and innovative digital solutions.">
     <meta property="og:title" content="codernoel - Noel Shaju | Creative Developer">
     <meta property="og:description" content="codernoel - Creative Developer specializing in modern web experiences and innovative digital solutions.">
-    <meta property="og:image" content="https://codernoel.com/images/social-preview.jpg">
+    <meta property="og:image" content="images/SocialPreview.png">
     <meta property="og:url" content="https://codernoel.com">
     <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="codernoel - Noel Shaju | Creative Developer">
+    <meta name="twitter:description" content="Creative Developer specializing in modern web experiences and innovative digital solutions.">
+    <meta name="twitter:image" content="images/SocialPreview.png">
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
@@ -31,22 +35,23 @@
 </head>
 
 <body>
+    <a href="#mainContent" class="skip-link">Skip to content</a>
     <!-- Loading screen -->
-    <div class="loading-screen" id="loadingScreen">
+    <div class="loading-screen" id="loadingScreen" aria-hidden="true">
         <div class="loader">
             <div class="loader-inner"></div>
         </div>
     </div>
 
     <!-- Navigation -->
-    <nav class="nav" id="nav">
+    <nav class="nav" id="nav" role="navigation" aria-label="Primary">
         <div class="nav-container">
             <a href="#hero" class="nav-logo">
                 <img src="images/logo.png" alt="codernoel logo" class="logo-image" id="logoImage">
             </a>
             
             <div class="nav-links" id="navLinks">
-                <a href="#hero" class="nav-link" data-section="hero">Home</a>
+                <a href="#hero" class="nav-link" data-section="hero" aria-current="page">Home</a>
                 <a href="#about" class="nav-link" data-section="about">About</a>
                 <a href="#projects" class="nav-link" data-section="projects">Work</a>
                 <a href="#contact" class="nav-link" data-section="contact">Contact</a>
@@ -58,7 +63,7 @@
                     <span class="theme-icon theme-icon-dark">🌙</span>
                 </button>
                 
-                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu" aria-controls="mobileMenu" aria-expanded="false">
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
@@ -68,7 +73,7 @@
     </nav>
 
     <!-- Mobile menu overlay -->
-    <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
         <div class="mobile-menu-content">
             <a href="#hero" class="mobile-menu-link" data-section="hero">Home</a>
             <a href="#about" class="mobile-menu-link" data-section="about">About</a>
@@ -78,7 +83,7 @@
     </div>
 
     <!-- Main content -->
-    <main>
+    <main id="mainContent">
         <!-- Hero Section -->
         <section class="hero" id="hero">
             <div class="hero-container">
@@ -107,7 +112,7 @@
                                 <span>Get In Touch</span>
                             </a>
                         </div>
-                        <div class="hero-scroll-indicator">
+                        <div class="hero-scroll-indicator" aria-hidden="true">
                             <span>Scroll to explore</span>
                             <div class="scroll-arrow">
                                 <svg viewBox="0 0 24 24" fill="none">
@@ -148,7 +153,7 @@
                     </div>
                 </div>
             </div>
-            <div class="hero-bg-pattern"></div>
+            <div class="hero-bg-pattern" aria-hidden="true"></div>
         </section>
 
         <!-- About Section -->
@@ -244,7 +249,7 @@
                             <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250' viewBox='0 0 400 250'%3E%3Cdefs%3E%3ClinearGradient id='grad1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2306b6d4;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%236366f1;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='250' fill='url(%23grad1)' /%3E%3Ctext x='200' y='120' font-family='Arial, sans-serif' font-size='20' font-weight='bold' text-anchor='middle' fill='white'%3E👟 Smart Shoe%3C/text%3E%3Ctext x='200' y='145' font-family='Arial, sans-serif' font-size='14' text-anchor='middle' fill='rgba(255,255,255,0.8)'%3EProjected UI Prototype%3C/text%3E%3Ctext x='200' y='165' font-family='Arial, sans-serif' font-size='12' text-anchor='middle' fill='rgba(255,255,255,0.7)'%3EDECO2500 HCI Project%3C/text%3E%3C/svg%3E" alt="Smart Shoe prototype with projected UI" loading="lazy">
                             <div class="project-overlay">
                                 <div class="project-links">
-                                    <a href="https://github.com/CoderNoel/shoe-simulation" class="project-link" target="_blank" rel="noopener">
+                                    <a href="https://github.com/CoderNoel/shoe-simulation" class="project-link" target="_blank" rel="noopener noreferrer">
                                         <svg viewBox="0 0 24 24" fill="none">
                                             <path d="M9 19C4 20.5 4 16.5 2 16M22 16V21C22 21.5304 21.7893 22.0391 21.4142 22.4142C21.0391 22.7893 20.5304 23 20 23H4C3.46957 23 2.96086 22.7893 2.58579 22.4142C2.21071 22.0391 2 21.5304 2 21V16M22 16C22 15.4696 21.7893 14.9609 21.4142 14.5858C21.0391 14.2107 20.5304 14 20 14H4C3.46957 14 2.96086 14.2107 2.58579 14.5858C2.21071 14.9609 2 15.4696 2 16M16 6L12 2L8 6M12 2V14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
@@ -275,7 +280,7 @@
                             <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250' viewBox='0 0 400 250'%3E%3Cdefs%3E%3ClinearGradient id='grad2' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23007AFF;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%235856D6;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='250' fill='url(%23grad2)' /%3E%3Ctext x='200' y='120' font-family='Arial, sans-serif' font-size='20' font-weight='bold' text-anchor='middle' fill='white'%3E🚀 SwiftUI Apps%3C/text%3E%3Ctext x='200' y='145' font-family='Arial, sans-serif' font-size='14' text-anchor='middle' fill='rgba(255,255,255,0.8)'%3EiOS Development Journey%3C/text%3E%3Ctext x='200' y='165' font-family='Arial, sans-serif' font-size='12' text-anchor='middle' fill='rgba(255,255,255,0.7)'%3EApple Developer Tutorials%3C/text%3E%3C/svg%3E" alt="SwiftUI Tutorials - iOS development projects" loading="lazy">
                             <div class="project-overlay">
                                 <div class="project-links">
-                                    <a href="https://github.com/CoderNoel/SwiftUI-Tutorials" class="project-link" target="_blank" rel="noopener">
+                                    <a href="https://github.com/CoderNoel/SwiftUI-Tutorials" class="project-link" target="_blank" rel="noopener noreferrer">
                                         <svg viewBox="0 0 24 24" fill="none">
                                             <path d="M9 19C4 20.5 4 16.5 2 16M22 16V21C22 21.5304 21.7893 22.0391 21.4142 22.4142C21.0391 22.7893 20.5304 23 20 23H4C3.46957 23 2.96086 22.7893 2.58579 22.4142C2.21071 22.0391 2 21.5304 2 21V16M22 16C22 15.4696 21.7893 14.9609 21.4142 14.5858C21.0391 14.2107 20.5304 14 20 14H4C3.46957 14 2.96086 14.2107 2.58579 14.5858C2.21071 14.9609 2 15.4696 2 16M16 6L12 2L8 6M12 2V14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
@@ -306,7 +311,7 @@
                             <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250' viewBox='0 0 400 250'%3E%3Cdefs%3E%3ClinearGradient id='grad3' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2310b981;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%2306b6d4;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='250' fill='url(%23grad3)' /%3E%3Ctext x='200' y='120' font-family='Arial, sans-serif' font-size='20' font-weight='bold' text-anchor='middle' fill='white'%3E⭕ Fancy Tic Tac Toe%3C/text%3E%3Ctext x='200' y='145' font-family='Arial, sans-serif' font-size='14' text-anchor='middle' fill='rgba(255,255,255,0.8)'%3EStackable Markers Game%3C/text%3E%3Ctext x='200' y='165' font-family='Arial, sans-serif' font-size='12' text-anchor='middle' fill='rgba(255,255,255,0.7)'%3ECSSE1001 Assignment%3C/text%3E%3C/svg%3E" alt="Fancy Tic Tac Toe - Enhanced classic game implementation" loading="lazy">
                             <div class="project-overlay">
                                 <div class="project-links">
-                                    <a href="https://github.com/CoderNoel/Fancy-TicTacToe" class="project-link" target="_blank" rel="noopener">
+                                    <a href="https://github.com/CoderNoel/Fancy-TicTacToe" class="project-link" target="_blank" rel="noopener noreferrer">
                                         <svg viewBox="0 0 24 24" fill="none">
                                             <path d="M9 19C4 20.5 4 16.5 2 16M22 16V21C22 21.5304 21.7893 22.0391 21.4142 22.4142C21.0391 22.7893 20.5304 23 20 23H4C3.46957 23 2.96086 22.7893 2.58579 22.4142C2.21071 22.0391 2 21.5304 2 21V16M22 16C22 15.4696 21.7893 14.9609 21.4142 14.5858C21.0391 14.2107 20.5304 14 20 14H4C3.46957 14 2.96086 14.2107 2.58579 14.5858C2.21071 14.9609 2 15.4696 2 16M16 6L12 2L8 6M12 2V14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
@@ -338,12 +343,12 @@
                             <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250' viewBox='0 0 400 250'%3E%3Cdefs%3E%3ClinearGradient id='grad4' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%236366f1;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%238b5cf6;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='250' fill='url(%23grad4)' /%3E%3Ctext x='200' y='120' font-family='Arial, sans-serif' font-size='20' font-weight='bold' text-anchor='middle' fill='white'%3E📱 Portfolio Website%3C/text%3E%3Ctext x='200' y='145' font-family='Arial, sans-serif' font-size='14' text-anchor='middle' fill='rgba(255,255,255,0.8)'%3EModern Web Design%3C/text%3E%3Ctext x='200' y='165' font-family='Arial, sans-serif' font-size='12' text-anchor='middle' fill='rgba(255,255,255,0.7)'%3EDECO1400 Project%3C/text%3E%3C/svg%3E" alt="Portfolio Website - Modern responsive design showcase" loading="lazy">
                             <div class="project-overlay">
                                 <div class="project-links">
-                                    <a href="https://github.com/CoderNoel/portfolio-website" class="project-link" target="_blank" rel="noopener">
+                                    <a href="https://github.com/CoderNoel/portfolio-website" class="project-link" target="_blank" rel="noopener noreferrer">
                                         <svg viewBox="0 0 24 24" fill="none">
                                             <path d="M9 19C4 20.5 4 16.5 2 16M22 16V21C22 21.5304 21.7893 22.0391 21.4142 22.4142C21.0391 22.7893 20.5304 23 20 23H4C3.46957 23 2.96086 22.7893 2.58579 22.4142C2.21071 22.0391 2 21.5304 2 21V16M22 16C22 15.4696 21.7893 14.9609 21.4142 14.5858C21.0391 14.2107 20.5304 14 20 14H4C3.46957 14 2.96086 14.2107 2.58579 14.5858C2.21071 14.9609 2 15.4696 2 16M16 6L12 2L8 6M12 2V14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
                                     </a>
-                                    <a href="https://codernoel.com" class="project-link" target="_blank" rel="noopener">
+                                    <a href="https://codernoel.com" class="project-link" target="_blank" rel="noopener noreferrer">
                                         <svg viewBox="0 0 24 24" fill="none">
                                             <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
@@ -375,7 +380,7 @@
                             <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250' viewBox='0 0 400 250'%3E%3Cdefs%3E%3ClinearGradient id='grad5' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23f59e0b;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23ef4444;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='250' fill='url(%23grad5)' /%3E%3Ctext x='200' y='120' font-family='Arial, sans-serif' font-size='20' font-weight='bold' text-anchor='middle' fill='white'%3E🎮 Fancy Sokoban%3C/text%3E%3Ctext x='200' y='145' font-family='Arial, sans-serif' font-size='14' text-anchor='middle' fill='rgba(255,255,255,0.8)'%3EPuzzle Game Enhanced%3C/text%3E%3Ctext x='200' y='165' font-family='Arial, sans-serif' font-size='12' text-anchor='middle' fill='rgba(255,255,255,0.7)'%3ECSSE1001 Assignment%3C/text%3E%3C/svg%3E" alt="Fancy Sokoban - Enhanced puzzle game with Python" loading="lazy">
                             <div class="project-overlay">
                                 <div class="project-links">
-                                    <a href="https://github.com/CoderNoel/FancySokobhan" class="project-link" target="_blank" rel="noopener">
+                                    <a href="https://github.com/CoderNoel/FancySokobhan" class="project-link" target="_blank" rel="noopener noreferrer">
                                         <svg viewBox="0 0 24 24" fill="none">
                                             <path d="M9 19C4 20.5 4 16.5 2 16M22 16V21C22 21.5304 21.7893 22.0391 21.4142 22.4142C21.0391 22.7893 20.5304 23 20 23H4C3.46957 23 2.96086 22.7893 2.58579 22.4142C2.21071 22.0391 2 21.5304 2 21V16M22 16C22 15.4696 21.7893 14.9609 21.4142 14.5858C21.0391 14.2107 20.5304 14 20 14H4C3.46957 14 2.96086 14.2107 2.58579 14.5858C2.21071 14.9609 2 15.4696 2 16M16 6L12 2L8 6M12 2V14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
@@ -407,7 +412,7 @@
                             <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250' viewBox='0 0 400 250'%3E%3Cdefs%3E%3ClinearGradient id='grad6' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%238b5cf6;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23ec4899;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='250' fill='url(%23grad6)' /%3E%3Ctext x='200' y='120' font-family='Arial, sans-serif' font-size='20' font-weight='bold' text-anchor='middle' fill='white'%3E⚡ Pokemon Game%3C/text%3E%3Ctext x='200' y='145' font-family='Arial, sans-serif' font-size='14' text-anchor='middle' fill='rgba(255,255,255,0.8)'%3ETerminal Battle System%3C/text%3E%3Ctext x='200' y='165' font-family='Arial, sans-serif' font-size='12' text-anchor='middle' fill='rgba(255,255,255,0.7)'%3ECodecademy Project%3C/text%3E%3C/svg%3E" alt="Pokemon Terminal Game - Object-oriented battle system" loading="lazy">
                             <div class="project-overlay">
                                 <div class="project-links">
-                                    <a href="https://github.com/CoderNoel/Pokemon-Game" class="project-link" target="_blank" rel="noopener">
+                                    <a href="https://github.com/CoderNoel/Pokemon-Game" class="project-link" target="_blank" rel="noopener noreferrer">
                                         <svg viewBox="0 0 24 24" fill="none">
                                             <path d="M9 19C4 20.5 4 16.5 2 16M22 16V21C22 21.5304 21.7893 22.0391 21.4142 22.4142C21.0391 22.7893 20.5304 23 20 23H4C3.46957 23 2.96086 22.7893 2.58579 22.4142C2.21071 22.0391 2 21.5304 2 21V16M22 16C22 15.4696 21.7893 14.9609 21.4142 14.5858C21.0391 14.2107 20.5304 14 20 14H4C3.46957 14 2.96086 14.2107 2.58579 14.5858C2.21071 14.9609 2 15.4696 2 16M16 6L12 2L8 6M12 2V14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
@@ -436,7 +441,7 @@
                 </div>
                 
                 <div class="projects-cta">
-                    <a href="https://github.com/codernoel" class="btn btn-outline" target="_blank" rel="noopener">
+                    <a href="https://github.com/codernoel" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
                         <span>View All Projects</span>
                         <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
                             <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -483,23 +488,23 @@
                                 </div>
                             </div>
                             <div class="social-links">
-                                <a href="https://github.com/codernoel" target="_blank" rel="noopener">
+                                <a href="https://github.com/codernoel" target="_blank" rel="noopener noreferrer">
                                     <svg class="social-icon github-icon" viewBox="0 0 98 96" fill="currentColor">
                                         <path d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"/>
                                     </svg>
                                     GitHub
                                 </a>
-                                <a href="https://linkedin.com/in/codernoel" target="_blank" rel="noopener">
+                                <a href="https://linkedin.com/in/codernoel" target="_blank" rel="noopener noreferrer">
                                     <img src="images/LinkedIn-Logos/LI-In-Bug.png" alt="LinkedIn" class="social-icon linkedin-icon">
                                     LinkedIn
                                 </a>
-                                <a href="https://x.com/codernoel_" target="_blank" rel="noopener">
+                                <a href="https://x.com/codernoel_" target="_blank" rel="noopener noreferrer">
                                     <svg class="social-icon x-icon" viewBox="0 0 24 24" fill="currentColor">
                                         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                                     </svg>
                                     X (Twitter)
                                 </a>
-                                <a href="https://instagram.com/codernoel" target="_blank" rel="noopener">
+                                <a href="https://instagram.com/codernoel" target="_blank" rel="noopener noreferrer">
                                     <svg class="social-icon instagram-icon" viewBox="0 0 24 24" fill="currentColor">
                                         <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                                     </svg>
@@ -538,7 +543,7 @@
                             </svg>
                         </button>
                         
-                        <div class="form-status" id="formStatus"></div>
+                        <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
                     </form>
                 </div>
             </div>
@@ -568,7 +573,7 @@
     <!-- Cursor follower -->
     <div class="cursor" id="cursor"></div>
     <div class="cursor-dot" id="cursorDot"></div>
-
+    
     <!-- Scripts -->
     <script src="scripts/modern.js"></script>
 </body>
