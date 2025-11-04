@@ -59,8 +59,34 @@
             
             <div class="nav-controls">
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                    <span class="theme-icon theme-icon-light">☀️</span>
-                    <span class="theme-icon theme-icon-dark">🌙</span>
+                    <span class="theme-toggle-track" aria-hidden="true">
+                        <span class="theme-toggle-icon theme-toggle-icon-sun">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.6"/>
+                                <path d="M12 3v2M12 19v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M3 12h2M19 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                        <span class="theme-toggle-icon theme-toggle-icon-moon">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M21 14.5A8.5 8.5 0 0 1 10.5 4a8.5 8.5 0 1 0 10.5 10.5Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="theme-toggle-knob">
+                            <span class="theme-toggle-knob-glow"></span>
+                            <span class="theme-toggle-knob-icon theme-toggle-knob-icon-sun">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.4"/>
+                                    <path d="M12 3v2M12 19v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M3 12h2M19 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                                </svg>
+                            </span>
+                            <span class="theme-toggle-knob-icon theme-toggle-knob-icon-moon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 14.5A8.5 8.5 0 0 1 10.5 4a8.5 8.5 0 1 0 10.5 10.5Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                        </span>
+                    </span>
+                    <span class="sr-only">Switch between light and dark theme</span>
                 </button>
                 
                 <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu" aria-controls="mobileMenu" aria-expanded="false">
