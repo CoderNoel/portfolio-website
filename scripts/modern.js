@@ -567,6 +567,36 @@ class PortfolioApp {
     }
 }
 
+// Add copy-to-clipboard for thumbnail actions
+(function initCopyLink(){
+    document.addEventListener('click', async (e) => {
+        const btn = e.target.closest('.js-copy-link');
+        if (!btn) return;
+        const url = btn.getAttribute('data-copy');
+        if (!url) return;
+        try {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                await navigator.clipboard.writeText(url);
+            } else {
+                const temp = document.createElement('input');
+                temp.value = url;
+                document.body.appendChild(temp);
+                temp.select();
+                document.execCommand('copy');
+                document.body.removeChild(temp);
+            }
+            const card = btn.closest('.project-image');
+            const badge = card && card.querySelector('.copy-badge');
+            if (badge) {
+                badge.classList.add('visible');
+                setTimeout(() => badge.classList.remove('visible'), 1600);
+            }
+        } catch (err) {
+            console.warn('Copy failed', err);
+        }
+    });
+})();
+
 // Initialize the app when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     new PortfolioApp();
